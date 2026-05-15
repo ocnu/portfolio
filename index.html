@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<!--
+╔══════════════════════════════════════════════════════════════╗
+║  CLASSIFICATION: TOP SECRET // SCI // CI POLY               ║
+║  SUBJECT FILE: S.OH // USAF_CNO // OFFENSIVE SEC OPS        ║
+║  AVAILABLE: MAY 2027 // MILITARY SEPARATION                 ║
+╠══════════════════════════════════════════════════════════════╣
+║  ROT13 MESSAGE:                                             ║
+║  Fgrcura Bu vf bar bs gur orfg pnaqvqngrf lbh'yy zrrg.     ║
+║  FLAG{s0urc3_c0d3_r34d3r_d3t3ct3d_g00d_0p3r4t0r}          ║
+╠══════════════════════════════════════════════════════════════╣
+║  EASTER EGG MANIFEST:                                       ║
+║  → right-click anywhere  → ↑↑↓↓←→←→BA                     ║
+║  → type: decrypt / status / help / game / nmap / hire      ║
+║  → hover redacted bars   → click stat numbers              ║
+║  → click skill items     → >_ terminal (15+ commands)      ║
+║  → idle 30s              → rapid mouse shake               ║
+║  → inspect the form      → footer cipher (ROT13)           ║
+╚══════════════════════════════════════════════════════════════╝
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Stephen Oh — Offensive Security</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#060A12;--ink2:#0A1020;--ink3:#0F1830;--ink4:#162040;
+  --blue:#4DA8FF;--blue2:#1F7AE0;--blue3:#0A3D80;
+  --text:#BED0EE;--muted:#4E6880;--faint:#1A2E48;
+  --border:rgba(77,168,255,0.1);--border2:rgba(77,168,255,0.22);
+  --red:#FF4040;--green:#00DD88;
+  --font-d:'Bebas Neue',sans-serif;--font-m:'IBM Plex Mono',monospace;
+  --max:1100px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--text);font-family:var(--font-m);font-size:14px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");opacity:0.4}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--ink)}::-webkit-scrollbar-thumb{background:var(--blue3)}
+
+/* SCROLL PROGRESS */
+#scroll-bar{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0%;transition:width 0.1s linear;pointer-events:none}
+
+/* BOOT SEQUENCE */
+#boot{position:fixed;inset:0;z-index:8888;background:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:3rem;font-family:var(--font-m);transition:opacity 0.5s ease}
+#boot.hidden{opacity:0;pointer-events:none}
+.boot-line{font-size:0.8rem;line-height:2;white-space:nowrap;overflow:hidden;width:0;animation:typeIn 0s forwards}
+@keyframes typeIn{to{width:100%}}
+.b-ok{color:var(--green)}.b-w{color:var(--blue)}.b-e{color:var(--red)}.b-d{color:var(--muted)}
+.boot-cursor{display:inline-block;width:8px;height:14px;background:var(--blue);vertical-align:middle;animation:blink 0.8s step-end infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;height:52px;background:rgba(6,10,18,0.96);border-bottom:1px solid var(--border);backdrop-filter:blur(8px)}
+.nav-file{font-size:0.68rem;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:color 0.2s}
+.nav-file:hover{color:var(--blue)}
+.nav-file span{color:var(--blue)}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--blue)}
+.nav-btn{font-family:var(--font-m);font-size:0.68rem;color:var(--faint);background:none;border:1px solid var(--faint);border-radius:2px;padding:0.25rem 0.6rem;cursor:pointer;letter-spacing:0.1em;text-transform:uppercase;transition:all 0.2s}
+.nav-btn:hover{color:var(--blue);border-color:var(--blue2)}
+
+/* HERO */
+#hero{min-height:100vh;position:relative;overflow:hidden;display:flex;align-items:center;padding:7rem 3rem 5rem}
+.hero-bg{position:absolute;top:50%;left:-0.02em;transform:translateY(-50%);font-family:var(--font-d);font-size:clamp(14rem,28vw,26rem);line-height:0.85;color:rgba(77,168,255,0.03);letter-spacing:-0.02em;pointer-events:none;user-select:none;white-space:nowrap;transition:color 0.4s}
+#hero:hover .hero-bg{color:rgba(77,168,255,0.06)}
+.hero-rule{position:absolute;top:50%;left:0;right:0;height:1px;background:var(--border)}
+.hero-inner{position:relative;z-index:1;max-width:var(--max);width:100%;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.hero-eyebrow{font-size:0.63rem;color:var(--blue);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:0.75rem}
+.hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--blue)}
+h1{font-family:var(--font-d);font-size:clamp(4rem,9vw,8rem);line-height:0.9;letter-spacing:0.01em;color:var(--text);margin-bottom:1.5rem}
+h1 .hl{color:var(--blue)}
+.hero-sub{font-size:0.82rem;color:var(--muted);line-height:1.9;max-width:440px}
+.ghost-text{color:rgba(77,168,255,0.05);user-select:text;transition:color 0.3s;cursor:text;font-size:0.7rem;margin-top:0.5rem}
+.ghost-text:hover{color:var(--blue)}
+.hero-right{display:flex;flex-direction:column;border-left:1px solid var(--border);padding-left:3rem}
+.stat-row{display:flex;align-items:baseline;gap:1rem;padding:1.25rem 0;border-bottom:1px solid var(--border)}
+.stat-row:first-child{border-top:1px solid var(--border)}
+.stat-num{font-family:var(--font-d);font-size:3.2rem;color:var(--blue);line-height:1;min-width:80px;cursor:pointer;transition:color 0.2s}
+.stat-num:hover{color:#fff}
+.stat-label{font-size:0.7rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;line-height:1.5}
+.stat-label strong{display:block;color:var(--text);font-weight:500}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem}
+.btn-blue{display:inline-flex;align-items:center;gap:0.75rem;background:var(--blue);color:var(--ink);font-family:var(--font-m);font-weight:500;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.8rem 1.75rem;border:none;cursor:pointer;transition:opacity 0.2s,transform 0.15s;text-decoration:none}
+.btn-blue:hover{opacity:0.88;transform:translateY(-1px)}
+.btn-outline{display:inline-flex;align-items:center;gap:0.75rem;background:transparent;color:var(--blue);font-family:var(--font-m);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.8rem 1.75rem;border:1px solid var(--blue2);text-decoration:none;transition:background 0.2s}
+.btn-outline:hover{background:rgba(77,168,255,0.06)}
+.avail-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(0,221,136,0.06);border:1px solid rgba(0,221,136,0.2);color:var(--green);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.35rem 0.8rem;border-radius:2px;margin-bottom:1.25rem}
+.avail-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0}
+.classified-stamp{position:absolute;top:3rem;right:3rem;border:2px solid var(--red);border-radius:3px;padding:0.3rem 0.8rem;font-size:0.6rem;font-weight:700;color:var(--red);letter-spacing:0.18em;text-transform:uppercase;transform:rotate(-7deg);opacity:0.15;pointer-events:none;user-select:none}
+
+/* REDACTED */
+.redacted{display:inline;background:var(--text);color:transparent;border-radius:1px;cursor:pointer;transition:background 0.3s,color 0.3s;padding:0 3px;user-select:none;position:relative}
+.redacted:hover,.redacted.open{background:transparent;color:var(--blue);text-decoration:underline;text-decoration-style:dotted;text-decoration-color:var(--blue2)}
+.redacted-tip{display:none;position:absolute;bottom:120%;left:50%;transform:translateX(-50%);background:var(--ink3);border:1px solid var(--border2);padding:0.3rem 0.6rem;font-size:0.65rem;color:var(--blue);white-space:nowrap;z-index:100;border-radius:2px;letter-spacing:0.06em;pointer-events:none}
+.redacted:hover .redacted-tip{display:block}
+
+/* SECTIONS */
+section{padding:6rem 3rem;position:relative;z-index:1}
+.section-inner{max-width:var(--max);margin:0 auto}
+.section-header{display:flex;align-items:center;gap:1.5rem;margin-bottom:4rem}
+.section-num{font-family:var(--font-d);font-size:5rem;line-height:1;color:rgba(77,168,255,0.07);flex-shrink:0;cursor:pointer;user-select:none;transition:color 0.2s}
+.section-num:hover{color:rgba(77,168,255,0.2)}
+.section-file{font-size:0.6rem;color:var(--blue);letter-spacing:0.16em;text-transform:uppercase;margin-bottom:0.25rem}
+h2{font-family:var(--font-d);font-size:clamp(2rem,4vw,3.5rem);letter-spacing:0.03em;line-height:1;color:var(--text);cursor:pointer;user-select:none}
+h2:active{animation:glitchH2 0.3s steps(2)}
+@keyframes glitchH2{0%{clip-path:inset(0 0 80% 0);transform:translate(-2px,0);color:var(--blue)}50%{clip-path:inset(40% 0 20% 0);transform:translate(2px,0)}100%{clip-path:inset(0);transform:none;color:var(--text)}}
+.divider{height:1px;background:var(--border)}
+
+/* ABOUT */
+#about{background:var(--ink2)}
+.about-grid{display:grid;grid-template-columns:320px 1fr;gap:5rem;align-items:start}
+.subject-card{background:var(--ink3);border:1px solid var(--border);border-radius:2px;overflow:hidden}
+.subject-header{background:var(--blue);padding:0.5rem 1rem;display:flex;align-items:center;justify-content:space-between}
+.subject-header-label{font-size:0.62rem;font-weight:500;color:var(--ink);letter-spacing:0.14em;text-transform:uppercase}
+.subject-photo{aspect-ratio:1;background:var(--ink4);display:flex;align-items:center;justify-content:center;font-family:var(--font-d);font-size:5rem;color:rgba(77,168,255,0.1);position:relative;overflow:hidden;cursor:pointer}
+.subject-photo::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 4px,rgba(0,0,0,0.07) 4px,rgba(0,0,0,0.07) 5px);opacity:0;transition:opacity 0.3s}
+.subject-photo:hover::after{opacity:1}
+.subject-stamp{position:absolute;bottom:10px;right:10px;border:2px solid var(--blue);border-radius:2px;padding:0.2rem 0.5rem;font-size:0.5rem;font-weight:700;color:var(--blue);letter-spacing:0.15em;transform:rotate(-8deg);opacity:0;transition:opacity 0.3s;user-select:none}
+.subject-photo:hover .subject-stamp{opacity:0.7}
+.subject-data{padding:1rem}
+.data-row{display:flex;justify-content:space-between;align-items:baseline;padding:0.45rem 0;border-bottom:1px solid var(--border);font-size:0.7rem}
+.data-row:last-child{border-bottom:none}
+.data-key{color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;font-size:0.6rem}
+.data-val{color:var(--text)}.data-val.hl{color:var(--blue)}
+.about-body p{color:var(--muted);font-size:0.83rem;line-height:2;font-weight:300;margin-bottom:1.5rem}
+.about-body p strong{color:var(--text);font-weight:500}
+.about-quote{border-left:3px solid var(--blue);padding:1rem 1.5rem;margin:2rem 0;background:rgba(77,168,255,0.03);font-size:0.82rem;color:var(--muted);font-style:italic}
+.about-quote cite{display:block;margin-top:0.5rem;font-size:0.62rem;color:var(--blue);font-style:normal;letter-spacing:0.1em;text-transform:uppercase}
+
+/* EXPERIENCE */
+#experience{background:var(--ink)}
+.exp-list{display:flex;flex-direction:column;margin-top:0}
+.exp-row{padding:2.5rem 0;border-bottom:1px solid var(--border);cursor:pointer;transition:background 0.2s,padding 0.2s,margin 0.2s}
+.exp-row:first-child{border-top:1px solid var(--border)}
+.exp-row:hover{background:var(--ink2);padding-left:1.5rem;padding-right:1.5rem;margin:0 -1.5rem}
+.exp-header{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:baseline;margin-bottom:0.75rem}
+.exp-title{font-family:var(--font-d);font-size:1.5rem;letter-spacing:0.03em;color:var(--text)}
+.exp-date{font-size:0.65rem;color:var(--muted);letter-spacing:0.1em;white-space:nowrap}
+.exp-org{font-size:0.72rem;color:var(--blue);letter-spacing:0.08em;margin-bottom:0.75rem}
+.exp-body{font-size:0.8rem;color:var(--muted);line-height:1.9;font-weight:300;display:none}
+.exp-body.open{display:block}
+.exp-body ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;margin-top:0.5rem}
+.exp-body ul li{padding-left:1.25rem;position:relative}
+.exp-body ul li::before{content:'▸';position:absolute;left:0;color:var(--blue);font-size:0.65rem}
+.exp-hint{font-size:0.62rem;color:var(--faint);letter-spacing:0.1em;margin-top:0.5rem}
+
+/* SKILLS */
+#skills{background:var(--ink2)}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+.skill-block{background:var(--ink2);padding:2rem 1.75rem;transition:background 0.2s;position:relative;overflow:hidden}
+.skill-block:hover{background:var(--ink3)}
+.skill-block-num{font-family:var(--font-d);font-size:4rem;line-height:1;color:rgba(77,168,255,0.05);position:absolute;top:0.75rem;right:1rem;pointer-events:none}
+.skill-block h3{font-size:0.62rem;color:var(--blue);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem}
+.skill-block h3::before{content:'▸';opacity:0.5}
+.skill-list{list-style:none;display:flex;flex-direction:column;gap:0.35rem}
+.skill-list li{font-size:0.78rem;color:var(--muted);padding:0.3rem 0.6rem 0.3rem 1rem;position:relative;cursor:pointer;transition:color 0.2s,background 0.15s;border-radius:2px;display:flex;align-items:center;justify-content:space-between}
+.skill-list li::before{content:'—';position:absolute;left:0;color:var(--faint);font-size:0.68rem}
+.skill-list li:hover{color:var(--text);background:rgba(77,168,255,0.04)}
+.clr-badge{font-size:0.55rem;letter-spacing:0.08em;padding:0.1rem 0.35rem;border:1px solid;border-radius:1px;white-space:nowrap;margin-left:0.5rem;display:none}
+.skill-list li:hover .clr-badge{display:inline}
+.clr-u{color:#555;border-color:#333}.clr-c{color:#8888ff;border-color:#4444cc}.clr-s{color:#ff8800;border-color:#cc6600}.clr-ts{color:var(--red);border-color:#cc2200}
+
+/* CERTS */
+#certs{background:var(--ink)}
+.certs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:0}
+.cert-card{background:var(--ink2);border:1px solid var(--border);padding:1.25rem;transition:border-color 0.2s,background 0.2s}
+.cert-card:hover{border-color:var(--blue2);background:var(--ink3)}
+.cert-issuer{font-size:0.6rem;color:var(--blue);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.5rem}
+.cert-name{font-family:var(--font-d);font-size:1.1rem;letter-spacing:0.05em;color:var(--text);line-height:1.2}
+.cert-badge{display:inline-block;font-size:0.55rem;letter-spacing:0.1em;padding:0.15rem 0.45rem;border:1px solid;border-radius:1px;margin-top:0.5rem}
+.cert-mil{color:var(--red);border-color:rgba(255,64,64,0.3)}
+.cert-active{color:var(--green);border-color:rgba(0,221,136,0.3)}
+
+/* CONTACT */
+#contact{background:var(--ink2)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
+.contact-left h2{margin-bottom:1.5rem}
+.contact-intro{font-size:0.8rem;color:var(--muted);line-height:2;font-weight:300;margin-bottom:2.5rem}
+.contact-channels{display:flex;flex-direction:column}
+.channel{display:flex;align-items:center;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--border);text-decoration:none;color:inherit;transition:color 0.2s}
+.channel:first-child{border-top:1px solid var(--border)}
+.channel:hover{color:var(--blue)}
+.channel-icon{font-family:var(--font-d);font-size:1rem;color:var(--blue);min-width:32px}
+.channel-label{font-size:0.6rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;display:block}
+.channel-val{font-size:0.8rem;color:var(--text)}
+.channel-arrow{margin-left:auto;color:var(--faint);transition:color 0.2s,transform 0.2s}
+.channel:hover .channel-arrow{color:var(--blue);transform:translate(3px,-3px)}
+.contact-form{display:flex;flex-direction:column;gap:1rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-group{display:flex;flex-direction:column;gap:0.4rem}
+label{font-size:0.6rem;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase}
+input,textarea{background:var(--ink3);border:1px solid var(--border);color:var(--text);font-family:var(--font-m);font-size:0.82rem;padding:0.7rem 0.9rem;outline:none;width:100%;transition:border-color 0.2s;border-radius:0}
+input::placeholder,textarea::placeholder{color:var(--faint)}
+input:focus,textarea:focus{border-color:var(--blue2);background:var(--ink4)}
+textarea{resize:vertical;min-height:110px}
+.secret-field{position:absolute;left:-9999px;opacity:0;pointer-events:none;height:0;overflow:hidden}
+
+/* FOOTER */
+footer{background:var(--ink);border-top:1px solid var(--border);padding:1.5rem 3rem;display:flex;align-items:center;justify-content:space-between}
+.footer-left{font-size:0.62rem;color:var(--faint);letter-spacing:0.1em}
+.footer-left span{color:var(--muted)}
+.footer-cipher{font-size:0.6rem;color:var(--faint);letter-spacing:0.08em;cursor:help;border-bottom:1px dotted var(--faint);transition:color 0.2s}
+.footer-cipher:hover{color:var(--blue)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:none}
+.d1{transition-delay:0.1s}.d2{transition-delay:0.2s}.d3{transition-delay:0.3s}
+
+/* ── OVERLAYS ── */
+#ctx{position:fixed;z-index:9000;background:var(--ink3);border:1px solid var(--border2);min-width:210px;display:none;box-shadow:0 8px 40px rgba(0,0,0,0.7)}
+.ctx-head{background:var(--blue);padding:0.4rem 0.9rem;font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;font-weight:500;color:var(--ink)}
+.ctx-item{padding:0.6rem 0.9rem;font-size:0.7rem;color:var(--muted);cursor:pointer;transition:background 0.15s,color 0.15s;display:flex;align-items:center;gap:0.75rem;letter-spacing:0.06em}
+.ctx-item:hover{background:var(--ink4);color:var(--blue)}
+.ctx-item .ci{color:var(--blue);font-size:0.65rem;min-width:14px}
+.ctx-sep{height:1px;background:var(--border);margin:0.2rem 0}
+.ctx-danger{color:var(--red) !important}.ctx-danger:hover{background:rgba(255,64,64,0.06) !important;color:var(--red) !important}
+
+#status-pop,#help-pop,#hire-pop{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:8500;background:var(--ink3);border:1px solid var(--border2);min-width:380px;max-width:92vw;display:none;animation:popIn 0.2s ease;box-shadow:0 20px 80px rgba(0,0,0,0.8)}
+@keyframes popIn{from{opacity:0;transform:translate(-50%,-54%)}to{opacity:1;transform:translate(-50%,-50%)}}
+.pop-head{background:var(--blue);padding:0.5rem 1rem;display:flex;align-items:center;justify-content:space-between}
+.pop-title{font-size:0.62rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink)}
+.pop-close{background:none;border:none;color:var(--ink);cursor:pointer;font-size:1rem;opacity:0.6;line-height:1}
+.pop-close:hover{opacity:1}
+.pop-body{padding:1.25rem 1rem;font-size:0.72rem;line-height:1.9;max-height:75vh;overflow-y:auto}
+.pop-row{display:flex;justify-content:space-between;gap:2rem;padding:0.3rem 0;border-bottom:1px solid var(--border)}
+.pop-row:last-child{border-bottom:none}
+.pop-k{color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;font-size:0.62rem}
+.pop-v{color:var(--blue)}
+.help-row{display:flex;gap:1.5rem;padding:0.25rem 0;border-bottom:1px solid rgba(77,168,255,0.06)}
+.help-row:last-child{border-bottom:none}
+.help-cmd{color:var(--blue);min-width:130px;flex-shrink:0}
+.help-desc{color:var(--muted)}
+.hire-body{padding:1.5rem;font-size:0.78rem;line-height:2}
+.hire-ok{color:var(--green)}.hire-w{color:var(--blue)}.hire-d{color:var(--muted)}
+
+#nmap-pop{position:fixed;bottom:2rem;right:2rem;z-index:8500;background:#000d1a;border:1px solid var(--border2);min-width:380px;max-width:92vw;display:none;animation:slideUp 0.3s ease;box-shadow:0 20px 60px rgba(0,0,0,0.8);font-family:var(--font-m);font-size:0.72rem}
+@keyframes slideUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+#nmap-pop .pop-head{background:#001a33}
+#nmap-body{padding:1rem;line-height:1.8;color:#66aaff;max-height:300px;overflow-y:auto}
+.nm-g{color:var(--green)}.nm-r{color:var(--red)}.nm-m{color:var(--muted)}
+
+#konami-ov{position:fixed;inset:0;z-index:9999;background:var(--ink);display:none;flex-direction:column;align-items:center;justify-content:center;font-family:var(--font-d)}
+.kb{position:absolute;inset:16px;border:2px solid var(--blue2);pointer-events:none}
+.kc{position:absolute;width:22px;height:22px;border-color:var(--blue);border-style:solid}
+.kc.tl{top:-2px;left:-2px;border-width:3px 0 0 3px}.kc.tr{top:-2px;right:-2px;border-width:3px 3px 0 0}
+.kc.bl{bottom:-2px;left:-2px;border-width:0 0 3px 3px}.kc.br{bottom:-2px;right:-2px;border-width:0 3px 3px 0}
+.konami-main{font-size:clamp(3rem,10vw,8rem);color:var(--blue);letter-spacing:0.08em;animation:pulse 0.8s ease-in-out infinite alternate;position:relative;z-index:1}
+@keyframes pulse{from{opacity:1}to{opacity:0.4}}
+.konami-sub{font-size:0.78rem;color:var(--muted);margin-top:1rem;font-family:var(--font-m);letter-spacing:0.18em;position:relative;z-index:1}
+.konami-bar{width:280px;height:2px;background:var(--border);margin:2rem auto 0;overflow:hidden;position:relative;z-index:1}
+.konami-prog{height:100%;background:var(--blue);width:0%;transition:width 3.2s linear}
+
+#term-ov{position:fixed;inset:0;z-index:9000;background:rgba(0,5,15,0.98);display:none;flex-direction:column;font-family:var(--font-m);padding:2rem}
+.term-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;border-bottom:1px solid rgba(77,168,255,0.12);padding-bottom:0.75rem}
+.term-title{color:var(--blue);font-size:0.78rem;letter-spacing:0.1em}
+.term-x{background:none;border:1px solid rgba(77,168,255,0.2);color:var(--blue);font-family:var(--font-m);font-size:0.72rem;padding:0.25rem 0.6rem;cursor:pointer;border-radius:2px;transition:background 0.2s}
+.term-x:hover{background:rgba(77,168,255,0.08)}
+#term-out{flex:1;overflow-y:auto;font-size:0.8rem;line-height:1.85;margin-bottom:1rem;scrollbar-width:thin;scrollbar-color:var(--blue3) transparent}
+.tg{color:var(--green)}.tb{color:var(--blue)}.tr{color:var(--red)}.tw{color:#ffaa00}.td{color:var(--muted)}.te{color:#333}
+.term-in-row{display:flex;align-items:center;gap:0.5rem;border-top:1px solid rgba(77,168,255,0.1);padding-top:0.75rem}
+.term-ps{color:var(--blue);font-size:0.82rem;flex-shrink:0}
+#term-in{flex:1;background:none;border:none;outline:none;color:var(--blue);font-family:var(--font-m);font-size:0.82rem;caret-color:var(--blue)}
+
+#game-ov{position:fixed;inset:0;z-index:9500;background:rgba(0,5,15,0.99);display:none;flex-direction:column;align-items:center;justify-content:center;font-family:var(--font-m)}
+.game-head{margin-bottom:1rem;display:flex;align-items:center;gap:2rem}
+.game-title{font-family:var(--font-d);font-size:2rem;color:var(--blue);letter-spacing:0.1em}
+#game-score{font-size:0.78rem;color:var(--muted);letter-spacing:0.1em}
+#game-canvas{border:1px solid var(--border2)}
+.game-hint{margin-top:1rem;font-size:0.65rem;color:var(--faint);letter-spacing:0.1em}
+.game-close-btn{margin-top:1.5rem;background:none;border:1px solid var(--border2);color:var(--muted);font-family:var(--font-m);font-size:0.7rem;letter-spacing:0.1em;padding:0.4rem 1rem;cursor:pointer;transition:color 0.2s,border-color 0.2s}
+.game-close-btn:hover{color:var(--blue);border-color:var(--blue2)}
+
+#idle-ov{position:fixed;inset:0;z-index:8000;background:rgba(0,5,15,0.85);display:none;flex-direction:column;align-items:center;justify-content:center;font-family:var(--font-m);backdrop-filter:blur(4px)}
+.idle-box{border:1px solid var(--red);padding:2.5rem 3rem;text-align:center;max-width:360px}
+.idle-icon{font-family:var(--font-d);font-size:3rem;color:var(--red);letter-spacing:0.1em;margin-bottom:0.5rem}
+.idle-msg{font-size:0.78rem;color:var(--muted);margin-bottom:1.5rem;letter-spacing:0.08em;line-height:1.8}
+.idle-count{font-size:2rem;color:var(--red);font-family:var(--font-d);letter-spacing:0.1em;margin-bottom:1rem}
+.idle-btn{background:none;border:1px solid var(--border2);color:var(--blue);font-family:var(--font-m);font-size:0.72rem;letter-spacing:0.1em;padding:0.5rem 1.5rem;cursor:pointer;text-transform:uppercase;transition:background 0.2s}
+.idle-btn:hover{background:rgba(77,168,255,0.08)}
+
+#glitch-ov{position:fixed;inset:0;z-index:7000;pointer-events:none;display:none}
+.glitch-strip{position:absolute;left:0;right:0;height:3px;background:var(--blue);opacity:0.8}
+
+/* ── CHATBOT ── */
+#chat-btn{position:fixed;bottom:2rem;right:2rem;z-index:6000;width:52px;height:52px;border-radius:50%;background:var(--blue);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(77,168,255,0.35);transition:transform 0.2s,opacity 0.2s}
+#chat-btn:hover{transform:scale(1.08)}
+#chat-btn svg{width:22px;height:22px;fill:var(--ink)}
+#chat-btn .chat-ping{position:absolute;top:-2px;right:-2px;width:12px;height:12px;border-radius:50%;background:var(--green);border:2px solid var(--ink);animation:pingPulse 2s ease-in-out infinite}
+@keyframes pingPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.3);opacity:0.7}}
+#chat-panel{position:fixed;bottom:5.5rem;right:2rem;z-index:6000;width:360px;max-height:520px;background:var(--ink3);border:1px solid var(--border2);border-radius:8px;display:none;flex-direction:column;box-shadow:0 16px 60px rgba(0,0,0,0.7);animation:chatOpen 0.25s ease}
+@keyframes chatOpen{from{opacity:0;transform:translateY(12px) scale(0.97)}to{opacity:1;transform:none scale(1)}}
+.chat-head{background:var(--blue);padding:0.75rem 1rem;border-radius:7px 7px 0 0;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.chat-head-left{display:flex;align-items:center;gap:0.6rem}
+.chat-head-dot{width:8px;height:8px;border-radius:50%;background:rgba(0,0,0,0.25)}
+.chat-head-dot.active{background:var(--ink);animation:pingPulse 2s infinite}
+.chat-head-title{font-family:var(--font-d);font-size:1rem;letter-spacing:0.08em;color:var(--ink)}
+.chat-head-sub{font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(0,0,0,0.45)}
+.chat-close{background:none;border:none;color:rgba(0,0,0,0.5);cursor:pointer;font-size:1rem;line-height:1;transition:color 0.2s}
+.chat-close:hover{color:var(--ink)}
+#chat-msgs{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:0.75rem;scrollbar-width:thin;scrollbar-color:var(--blue3) transparent;min-height:200px}
+.chat-msg{max-width:88%;font-size:0.78rem;line-height:1.7;padding:0.65rem 0.85rem;border-radius:6px;animation:msgIn 0.2s ease}
+@keyframes msgIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.chat-msg.ai{background:var(--ink4);color:var(--text);border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:2px}
+.chat-msg.user{background:var(--blue2);color:#fff;align-self:flex-end;border-bottom-right-radius:2px}
+.chat-msg.typing{background:var(--ink4);border:1px solid var(--border);align-self:flex-start;padding:0.75rem 1rem}
+.typing-dots{display:flex;gap:4px;align-items:center}
+.typing-dots span{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:typingDot 1.2s ease-in-out infinite}
+.typing-dots span:nth-child(2){animation-delay:0.2s}
+.typing-dots span:nth-child(3){animation-delay:0.4s}
+@keyframes typingDot{0%,60%,100%{transform:translateY(0);opacity:0.4}30%{transform:translateY(-4px);opacity:1}}
+.chat-input-row{display:flex;gap:0.5rem;padding:0.75rem;border-top:1px solid var(--border);flex-shrink:0}
+#chat-input{flex:1;background:var(--ink4);border:1px solid var(--border);color:var(--text);font-family:var(--font-m);font-size:0.78rem;padding:0.55rem 0.75rem;outline:none;border-radius:4px;transition:border-color 0.2s;resize:none}
+#chat-input:focus{border-color:var(--blue2)}
+#chat-input::placeholder{color:var(--faint)}
+#chat-send{background:var(--blue);border:none;cursor:pointer;border-radius:4px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:opacity 0.2s}
+#chat-send:hover{opacity:0.85}
+#chat-send svg{width:15px;height:15px;fill:var(--ink)}
+@media(max-width:600px){#chat-panel{width:calc(100vw - 2rem);right:1rem}#chat-btn{right:1rem;bottom:1rem}}
+@media(max-width:900px){
+  nav{padding:0 1.5rem}
+  .nav-links li:not(:last-child):not(:nth-last-child(2)){display:none}
+  section{padding:4rem 1.5rem}
+  #hero{padding:7rem 1.5rem 4rem}
+  .hero-inner,.about-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-right{border-left:none;border-top:1px solid var(--border);padding-left:0;padding-top:2rem}
+  .skills-grid,.certs-grid{grid-template-columns:1fr 1fr}
+  footer{flex-direction:column;gap:0.5rem;text-align:center}
+  .form-row{grid-template-columns:1fr}
+  .exp-header{grid-template-columns:1fr}
+}
+@media(max-width:600px){.skills-grid,.certs-grid{grid-template-columns:1fr}h1{font-size:4rem}.hero-bg{font-size:10rem}}
+</style>
+</head>
+<body>
+
+<div id="scroll-bar"></div>
+
+<!-- BOOT -->
+<div id="boot"><div id="boot-lines"></div><span class="boot-cursor" id="boot-cursor"></span></div>
+
+<!-- OVERLAYS -->
+<div id="ctx">
+  <div class="ctx-head">OPS TERMINAL — AUTHENTICATED</div>
+  <div class="ctx-item" onclick="navTo('#about');closeCtx()"><span class="ci">▸</span>VIEW SUBJECT FILE</div>
+  <div class="ctx-item" onclick="navTo('#experience');closeCtx()"><span class="ci">▸</span>VIEW EXPERIENCE</div>
+  <div class="ctx-item" onclick="navTo('#skills');closeCtx()"><span class="ci">▸</span>ACCESS CAPABILITIES</div>
+  <div class="ctx-item" onclick="navTo('#certs');closeCtx()"><span class="ci">▸</span>VIEW CERTIFICATIONS</div>
+  <div class="ctx-sep"></div>
+  <div class="ctx-item" onclick="revealAll();closeCtx()"><span class="ci">◈</span>DECLASSIFY ALL REDACTED</div>
+  <div class="ctx-item" onclick="triggerDecrypt();closeCtx()"><span class="ci">◈</span>DECRYPT HEADER</div>
+  <div class="ctx-item" onclick="openTerm();closeCtx()"><span class="ci">◈</span>OPEN OPERATOR TERMINAL</div>
+  <div class="ctx-item" onclick="showHelp();closeCtx()"><span class="ci">◈</span>SHOW SECRET COMMANDS</div>
+  <div class="ctx-sep"></div>
+  <div class="ctx-item ctx-danger" onclick="startKonami();closeCtx()"><span class="ci" style="color:var(--red)">!</span>BREACH PROTOCOL</div>
+</div>
+
+<div id="status-pop"><div class="pop-head"><span class="pop-title">SUBJECT STATUS REPORT</span><button class="pop-close" onclick="closeAll()">✕</button></div><div class="pop-body" id="status-body"></div></div>
+
+<div id="help-pop">
+  <div class="pop-head"><span class="pop-title">SECRET COMMANDS</span><button class="pop-close" onclick="closeAll()">✕</button></div>
+  <div class="pop-body">
+    <div class="help-row"><span class="help-cmd">decrypt</span><span class="help-desc">glitch the hero name</span></div>
+    <div class="help-row"><span class="help-cmd">status</span><span class="help-desc">live subject status report</span></div>
+    <div class="help-row"><span class="help-cmd">help</span><span class="help-desc">show this list</span></div>
+    <div class="help-row"><span class="help-cmd">game</span><span class="help-desc">launch classified snake</span></div>
+    <div class="help-row"><span class="help-cmd">nmap</span><span class="help-desc">scan the host</span></div>
+    <div class="help-row"><span class="help-cmd">hire</span><span class="help-desc">recruitment sequence</span></div>
+    <div class="help-row"><span class="help-cmd">↑↑↓↓←→←→BA</span><span class="help-desc">breach protocol</span></div>
+    <div class="help-row"><span class="help-cmd">right-click</span><span class="help-desc">ops context menu</span></div>
+    <div class="help-row"><span class="help-cmd">click stat nums</span><span class="help-desc">scramble animation</span></div>
+    <div class="help-row"><span class="help-cmd">click skills</span><span class="help-desc">reveal clearance level</span></div>
+    <div class="help-row"><span class="help-cmd">hover redacted</span><span class="help-desc">reveal classified intel</span></div>
+    <div class="help-row"><span class="help-cmd">click experience</span><span class="help-desc">expand job details</span></div>
+    <div class="help-row"><span class="help-cmd">>_ terminal</span><span class="help-desc">full operator shell</span></div>
+    <div class="help-row"><span class="help-cmd">idle 30s</span><span class="help-desc">session expiry warning</span></div>
+    <div class="help-row"><span class="help-cmd">shake mouse</span><span class="help-desc">screen glitch</span></div>
+    <div class="help-row"><span class="help-cmd">view source</span><span class="help-desc">find the hidden flag</span></div>
+    <div class="help-row"><span class="help-cmd">inspect form</span><span class="help-desc">find the honeypot</span></div>
+    <div class="help-row"><span class="help-cmd">hover footer text</span><span class="help-desc">ROT13 cipher hint</span></div>
+    <div class="help-row"><span class="help-cmd">ghost text (hero)</span><span class="help-desc">hover invisible line</span></div>
+    <div class="help-row"><span class="help-cmd">double-click h2</span><span class="help-desc">heading glitch</span></div>
+  </div>
+</div>
+
+<div id="nmap-pop"><div class="pop-head" style="background:#001a33"><span class="pop-title" style="color:var(--blue)">NMAP SCAN RESULTS</span><button class="pop-close" style="color:var(--blue)" onclick="closeAll()">✕</button></div><div id="nmap-body"></div></div>
+
+<div id="konami-ov">
+  <div class="kb"><div class="kc tl"></div><div class="kc tr"></div><div class="kc bl"></div><div class="kc br"></div></div>
+  <div style="text-align:center;position:relative;z-index:1">
+    <div class="konami-main" id="konami-main">EYES ONLY</div>
+    <div class="konami-sub" id="konami-sub">ACCESS GRANTED — WELCOME, OPERATOR</div>
+    <div class="konami-bar"><div class="konami-prog" id="konami-prog"></div></div>
+  </div>
+</div>
+
+<div id="term-ov">
+  <div class="term-bar"><span class="term-title">OPERATOR TERMINAL — soh@portfolio:~</span><button class="term-x" id="term-close">[ ESC / close ]</button></div>
+  <div id="term-out"></div>
+  <div class="term-in-row"><span class="term-ps">soh@portfolio:~$&nbsp;</span><input type="text" id="term-in" placeholder="type 'help' for commands..." autocomplete="off" spellcheck="false"/></div>
+</div>
+
+<div id="game-ov">
+  <div class="game-head"><div class="game-title">CLASSIFIED SNAKE</div><div id="game-score">SCORE: 0</div></div>
+  <canvas id="game-canvas" width="400" height="400"></canvas>
+  <div class="game-hint">WASD / ARROW KEYS • ENTER TO RESTART</div>
+  <button class="game-close-btn" onclick="closeGame()">[ ABORT MISSION ]</button>
+</div>
+
+<div id="idle-ov">
+  <div class="idle-box">
+    <div class="idle-icon">⚠ SESSION</div>
+    <div class="idle-msg">INACTIVITY DETECTED<br/>TERMINATING IN</div>
+    <div class="idle-count" id="idle-count">10</div>
+    <button class="idle-btn" onclick="resetIdle()">MAINTAIN CONNECTION</button>
+  </div>
+</div>
+
+<div id="glitch-ov"></div>
+
+<div id="hire-pop">
+  <div class="pop-head"><span class="pop-title">RECRUITMENT SEQUENCE</span><button class="pop-close" onclick="closeAll()">✕</button></div>
+  <div class="hire-body">
+    <div class="hire-d">// initiating secure recruitment channel...</div>
+    <div class="hire-ok">  [OK] Candidate: Stephen Oh — USAF_CNO</div>
+    <div class="hire-ok">  [OK] Clearance: TS/SCI + CI Polygraph</div>
+    <div class="hire-ok">  [OK] 6+ years offensive security: CONFIRMED</div>
+    <div class="hire-ok">  [OK] GPEN / GCIH / Security+: VALIDATED</div>
+    <div class="hire-ok">  [OK] Available: May 2027</div>
+    <div class="hire-w">  [>>] Open to: Red Team, Pen Test, Threat Ops,</div>
+    <div class="hire-w">  [>>] Security Engineering, Cloud Security, Detection Eng.</div>
+    <div style="margin-top:1.25rem;text-align:center"><a href="#contact" onclick="closeAll()" class="btn-blue" style="display:inline-flex">PROCEED TO CONTACT ↗</a></div>
+  </div>
+</div>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="nav-file" id="nav-file" onclick="copyFileNum()" title="Click to copy">FILE: <span>SO-USAF-CNO-TS-<span class="redacted">SCI-CIPOLY<span class="redacted-tip">TS/SCI + CI Polygraph</span></span></span></div>
+  <ul class="nav-links">
+    <li><a href="#about">SUBJECT</a></li>
+    <li><a href="#experience">EXPERIENCE</a></li>
+    <li><a href="#skills">SKILLS</a></li>
+    <li><a href="#contact">CONTACT</a></li>
+    <li><button class="nav-btn" onclick="openTerm()">_&gt;</button></li>
+  </ul>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="classified-stamp">TOP SECRET // SCI</div>
+  <div class="hero-bg">GHOST</div>
+  <div class="hero-rule"></div>
+  <div class="hero-inner">
+    <div class="hero-left reveal">
+      <div class="avail-badge">Available — May 2027</div>
+      <div class="hero-eyebrow">USAF_CNO — Offensive Security</div>
+      <h1>STEPHEN<br/>OH<span class="hl">.</span></h1>
+      <div class="ghost-text">[ CALLSIGN: GHOST_1B4 // TS/SCI + CI POLY // AVAILABLE: MAY 2027 ]</div>
+      <p class="hero-sub" style="margin-top:1.25rem">
+        6+ years in <span class="redacted">offensive security and network exploitation<span class="redacted-tip">AFSC: 1B4X1</span></span> across high-stakes national security environments.<br/><br/>
+        TS/SCI + CI Polygraph. Transitioning May 2027. Open to red team, penetration testing, threat ops, and detection engineering.
+      </p>
+      <div class="hero-actions">
+        <a href="#experience" class="btn-blue">VIEW EXPERIENCE ↗</a>
+        <a href="#contact" class="btn-outline">MAKE CONTACT</a>
+      </div>
+    </div>
+    <div class="hero-right reveal d2">
+      <div class="stat-row"><span class="stat-num" data-real="6+" title="Click me">6+</span><span class="stat-label"><strong>Years in Cyber</strong>Offensive Security Operations</span></div>
+      <div class="stat-row"><span class="stat-num" data-real="TS" title="Click me">TS</span><span class="stat-label"><strong>Clearance Level</strong>SCI + CI Polygraph</span></div>
+      <div class="stat-row"><span class="stat-num" data-real="GPEN" title="Click me">GPEN</span><span class="stat-label"><strong>Top Certification</strong>GIAC Penetration Tester</span></div>
+      <div class="stat-row"><span class="stat-num" data-real="2027" title="Click me">2027</span><span class="stat-label"><strong>Available From</strong>Military Separation: May 2027</span></div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- ─── ABOUT ─── -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-num">01</div>
+      <div><div class="section-file">// SUBJECT DOSSIER</div><h2>ABOUT THE ASSET</h2></div>
+    </div>
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="subject-card">
+          <div class="subject-header"><span class="subject-header-label">SUBJECT PHOTO</span><span style="font-size:0.58rem;color:var(--ink);letter-spacing:0.1em">AUTHENTICATED</span></div>
+          <!-- Upload your photo to Cloudflare Pages alongside index.html and name it photo.png -->
+          <div class="subject-photo">
+            <img src="photo.png" style="width:100%;height:100%;object-fit:cover;display:block" alt="Stephen Oh"/>
+            <div class="subject-stamp">IDENTIFIED</div>
+          </div>
+          <div class="subject-data">
+            <div class="data-row"><span class="data-key">Name</span><span class="data-val">Stephen Oh</span></div>
+            <div class="data-row"><span class="data-key">Designation</span><span class="data-val hl">USAF_CNO / 1B4X1</span></div>
+            <div class="data-row"><span class="data-key">TIS</span><span class="data-val">6+ Years</span></div>
+            <div class="data-row"><span class="data-key">Clearance</span><span class="data-val hl">TS/SCI + CI Poly</span></div>
+            <div class="data-row"><span class="data-key">Location</span><span class="data-val">Austin, TX</span></div>
+            <div class="data-row"><span class="data-key">Available</span><span class="data-val hl">May 2027</span></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="about-body">
+        <p class="reveal d1">Cybersecurity professional with 6+ years in <strong>offensive security, network exploitation, and vulnerability research</strong> across high-stakes national security environments. My career has been built on technical depth — doing the work, building training programs, and helping teams qualify faster.</p>
+        <p class="reveal d2">I hold an active <strong>TS/SCI clearance with CI Polygraph</strong> and have operated against <span class="redacted">sophisticated adversaries in support of national security objectives<span class="redacted-tip">multiple high-priority targets</span></span>, spanning network exploitation, intelligence collection, and coordinated joint cyber missions.</p>
+        <p class="reveal d3">Separating from the military in <strong>May 2027</strong>. Open to red team, penetration testing, threat operations, security engineering, cloud security, and detection engineering roles across government, defense, and private sector.</p>
+        <blockquote class="about-quote reveal d3">
+          "I've spent my career doing technical work, building training programs, and helping teams get qualified faster."
+          <cite>— Professional Summary</cite>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- ─── EXPERIENCE ─── -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-num">02</div>
+      <div><div class="section-file">// OPERATIONS LOG</div><h2>EXPERIENCE</h2></div>
+    </div>
+    <div class="exp-list reveal d1">
+
+      <div class="exp-row" onclick="toggleExp(this)">
+        <div class="exp-header">
+          <div class="exp-title">OFFENSIVE SECURITY OPERATOR</div>
+          <div class="exp-date">JUL 2024 — PRESENT</div>
+        </div>
+        <div class="exp-org">U.S. Air Force — Cyber Operations — San Antonio, TX</div>
+        <div class="exp-hint">▸ Click to expand operation brief</div>
+        <div class="exp-body">
+          <ul>
+            <li>Ran offensive security operations on a <span class="redacted">$1.5B national-level platform<span class="redacted-tip">classified platform designation</span></span>, conducting network exploitation and intelligence collection against high-priority targets.</li>
+            <li>Coordinated six operations with two international partner organizations — both hit 100% of their objectives. First allied collaboration of its kind in eight years, directly led to the organization's recertification.</li>
+            <li>Mentored five junior officers through a seven-month qualification pipeline. All passed — doubled the team's previous 55% pass rate.</li>
+            <li>Led cross-team recovery when a $1B platform failed mid-operation. Kept 40+ active engagements running without losing operational security posture.</li>
+            <li>Built a faster method to move mission-critical data — cut a two-month delivery delay to under an hour and doubled the number of qualified operators.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-row" onclick="toggleExp(this)">
+        <div class="exp-header">
+          <div class="exp-title">CYBERSECURITY OPERATOR</div>
+          <div class="exp-date">OCT 2020 — JUN 2024</div>
+        </div>
+        <div class="exp-org">U.S. Air Force — Cyber Operations — San Antonio, TX</div>
+        <div class="exp-hint">▸ Click to expand operation brief</div>
+        <div class="exp-body">
+          <ul>
+            <li>Conducted offensive security operations and network exploitation supporting four major organizations, across 12 operational teams and three task forces.</li>
+            <li>Mentored 12 junior officers through a 720-hour qualification course. All passed, finished 10 days early, protected a $3.5M training investment.</li>
+            <li>Rebuilt a 109-module training curriculum from the ground up — added 14 missing topics, updated 37 tasks. Student assessment scores improved 47%.</li>
+            <li>Launched an immersion program for 120 operators — recovered 50,000+ hours of training value lost between course rotations.</li>
+            <li>Advanced coursework: Linux (28-day), Windows exploitation (95%), penetration testing (89%), digital forensics (94%).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-row" onclick="toggleExp(this)">
+        <div class="exp-header">
+          <div class="exp-title">ELECTRONICS &amp; SYSTEMS TECHNICIAN</div>
+          <div class="exp-date">MAY 2017 — SEP 2020</div>
+        </div>
+        <div class="exp-org">U.S. Air Force — Ramstein Air Base, Germany</div>
+        <div class="exp-hint">▸ Click to expand operation brief</div>
+        <div class="exp-body">
+          <ul>
+            <li>Taught electronics and computer networking through a 776-hour technical program — 100% student graduation rate.</li>
+            <li>Trained 150+ personnel on electronics handling and safety. Passed 13 compliance audits at 100%, cut technician errors in half.</li>
+            <li>Component-level repairs on circuit boards and PCBs — troubleshooting, root-cause analysis, hands-on fixes keeping critical systems running.</li>
+            <li>Identified errors in standard maintenance procedures, wrote formal change requests, and got them adopted regionally — stopped a recurring failure pattern.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- ─── SKILLS ─── -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-num">03</div>
+      <div><div class="section-file">// CAPABILITY ASSESSMENT</div><h2>SKILLS &amp; TOOLS</h2></div>
+    </div>
+    <div class="skills-grid reveal d1">
+      <div class="skill-block"><div class="skill-block-num">01</div><h3>Offensive Security</h3>
+        <ul class="skill-list">
+          <li>Penetration Testing<span class="clr-badge clr-u">UNCLASS</span></li>
+          <li>Red Team Operations<span class="clr-badge clr-s">SECRET</span></li>
+          <li>Network Exploitation<span class="clr-badge clr-ts">TS/SCI</span></li>
+          <li>Privilege Escalation<span class="clr-badge clr-u">UNCLASS</span></li>
+          <li>Lateral Movement<span class="clr-badge clr-s">SECRET</span></li>
+          <li>C2 Frameworks<span class="clr-badge clr-c">CONFIDENTIAL</span></li>
+          <li>OSINT<span class="clr-badge clr-u">UNCLASS</span></li>
+        </ul>
+      </div>
+      <div class="skill-block"><div class="skill-block-num">02</div><h3>Security Analysis</h3>
+        <ul class="skill-list">
+          <li>Malware Triage &amp; Analysis<span class="clr-badge clr-c">CONFIDENTIAL</span></li>
+          <li>Digital Forensics<span class="clr-badge clr-u">UNCLASS</span></li>
+          <li>Incident Response<span class="clr-badge clr-u">UNCLASS</span></li>
+          <li>Threat Intelligence<span class="clr-badge clr-s">SECRET</span></li>
+          <li>Vulnerability Assessment<span class="clr-badge clr-u">UNCLASS</span></li>
+          <li>Reverse Engineering<span class="clr-badge clr-c">CONFIDENTIAL</span></li>
+        </ul>
+      </div>
+      <div class="skill-block"><div class="skill-block-num">03</div><h3>Tools</h3>
+        <ul class="skill-list">
+          <li>Metasploit / Cobalt Strike<span class="clr-badge clr-u">UNCLASS</span></li>
+          <li>Nmap / Nessus<span class="clr-badge clr-u">UNCLASS</span></li>
+          <li>Burp Suite<span class="clr-badge clr-u">UNCLASS</span></li>
+          <li>Wireshark<span class="clr-badge clr-u">UNCLASS</span></li>
+          <li>Ghidra / Volatility<span class="clr-badge clr-u">UNCLASS</span></li>
+          <li>Jira / Confluence<span class="clr-badge clr-u">UNCLASS</span></li>
+        </ul>
+      </div>
+      <div class="skill-block"><div class="skill-block-num">04</div><h3>Scripting &amp; Systems</h3>
+        <ul class="skill-list">
+          <li>Python<span class="clr-badge clr-u">UNCLASS</span></li>
+          <li>Bash / PowerShell<span class="clr-badge clr-u">UNCLASS</span></li>
+          <li>SQL<span class="clr-badge clr-u">UNCLASS</span></li>
+          <li>Windows / Linux / UNIX<span class="clr-badge clr-u">UNCLASS</span></li>
+          <li>Active Directory<span class="clr-badge clr-u">UNCLASS</span></li>
+        </ul>
+      </div>
+      <div class="skill-block"><div class="skill-block-num">05</div><h3>Frameworks</h3>
+        <ul class="skill-list">
+          <li>MITRE ATT&amp;CK<span class="clr-badge clr-u">UNCLASS</span></li>
+          <li>NIST CSF / RMF<span class="clr-badge clr-u">UNCLASS</span></li>
+          <li>OWASP<span class="clr-badge clr-u">UNCLASS</span></li>
+          <li>Kill Chain<span class="clr-badge clr-u">UNCLASS</span></li>
+          <li>Firewall / IDS / IPS<span class="clr-badge clr-u">UNCLASS</span></li>
+          <li>VPN / Packet Analysis<span class="clr-badge clr-u">UNCLASS</span></li>
+        </ul>
+      </div>
+      <div class="skill-block"><div class="skill-block-num">06</div><h3>Cloud &amp; Networking</h3>
+        <ul class="skill-list">
+          <li>AWS / Cloud Security<span class="clr-badge clr-u">UNCLASS</span></li>
+          <li>Virtualization<span class="clr-badge clr-u">UNCLASS</span></li>
+          <li>TCP/IP / DNS / HTTP/S<span class="clr-badge clr-u">UNCLASS</span></li>
+          <li>Sandboxing<span class="clr-badge clr-u">UNCLASS</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- ─── CERTS ─── -->
+<section id="certs">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-num">04</div>
+      <div><div class="section-file">// CREDENTIALS</div><h2>CERTIFICATIONS</h2></div>
+    </div>
+    <div class="certs-grid reveal d1">
+      <div class="cert-card"><div class="cert-issuer">GIAC</div><div class="cert-name">GPEN</div><div class="cert-badge cert-active">ACTIVE</div></div>
+      <div class="cert-card"><div class="cert-issuer">GIAC</div><div class="cert-name">GCIH</div><div class="cert-badge cert-active">ACTIVE</div></div>
+      <div class="cert-card"><div class="cert-issuer">Military / IC</div><div class="cert-name">CNOQC</div><div class="cert-badge cert-mil">MILITARY</div></div>
+      <div class="cert-card"><div class="cert-issuer">Military / IC</div><div class="cert-name">FORGE</div><div class="cert-badge cert-mil">MILITARY</div></div>
+      <div class="cert-card"><div class="cert-issuer">CompTIA</div><div class="cert-name">Security+</div><div class="cert-badge cert-active">ACTIVE</div></div>
+      <div class="cert-card"><div class="cert-issuer">CompTIA</div><div class="cert-name">A+</div><div class="cert-badge cert-active">ACTIVE</div></div>
+      <div class="cert-card"><div class="cert-issuer">CompTIA</div><div class="cert-name">Project+</div><div class="cert-badge cert-active">ACTIVE</div></div>
+      <div class="cert-card"><div class="cert-issuer">AWS</div><div class="cert-name">Cloud Practitioner</div><div class="cert-badge cert-active">ACTIVE</div></div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- ─── CONTACT ─── -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-num">05</div>
+      <div><div class="section-file">// INITIATE CONTACT</div><h2>MAKE CONTACT</h2></div>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <p class="contact-intro">Exploring SkillBridge opportunities, full-time roles in red team, penetration testing, threat ops, cloud security, or detection engineering — or just want to talk shop. I'm available May 2027.</p>
+        <div class="contact-channels">
+          <a href="mailto:ohstephenss@gmail.com" class="channel"><span class="channel-icon">@</span><span><span class="channel-label">Email</span><span class="channel-val">ohstephenss@gmail.com</span></span><span class="channel-arrow">↗</span></a>
+          <a href="https://linkedin.com/in/yourprofile" class="channel" target="_blank" rel="noopener"><span class="channel-icon">LI</span><span><span class="channel-label">LinkedIn</span><span class="channel-val">linkedin.com/in/yourprofile</span></span><span class="channel-arrow">↗</span></a>
+          <a href="https://github.com/yourusername" class="channel" target="_blank" rel="noopener"><span class="channel-icon">GH</span><span><span class="channel-label">GitHub</span><span class="channel-val">github.com/yourusername</span></span><span class="channel-arrow">↗</span></a>
+        </div>
+      </div>
+      <form class="contact-form reveal d2" action="https://formspree.io/f/REPLACE_WITH_YOUR_ID" method="POST">
+        <!-- HONEYPOT — dev tools only. flag{h0n3yp0t_0p3rat0r_d3t3ct3d} -->
+        <div class="secret-field" aria-hidden="true"><label>OPERATOR_LEVEL</label><input type="text" name="op_level" value="GHOST_1B4" tabindex="-1" autocomplete="off"/></div>
+        <div class="form-row">
+          <div class="form-group"><label for="fn">Name</label><input type="text" id="fn" name="name" placeholder="Jane Smith" required/></div>
+          <div class="form-group"><label for="fe">Email</label><input type="email" id="fe" name="email" placeholder="jane@org.com" required/></div>
+        </div>
+        <div class="form-group"><label for="fs">Organization</label><input type="text" id="fs" name="org" placeholder="Company / Agency"/></div>
+        <div class="form-group"><label for="fm">Message</label><textarea id="fm" name="message" placeholder="SkillBridge inquiry, role, or just reaching out..."></textarea></div>
+        <button type="submit" class="btn-blue">TRANSMIT ↗</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-left">STEPHEN OH // USAF_CNO // <span>© 2026</span> // CLOUDFLARE PAGES</div>
+  <div class="footer-cipher" title="ROT13 — decode it: Fgrcura Bu vf ernql sbe lbhe grnz.">FGRCURA BU VF ERNQL SBE LBHE GRNZ.</div>
+</footer>
+
+<script>
+/* CONSOLE */
+const A='color:#4DA8FF;font-weight:bold;font-family:monospace;font-size:11px';
+const B='color:#1A2E48;font-family:monospace;font-size:11px';
+console.log('%c╔══════════════════════════════════════════╗\n║  SUBJECT: Stephen Oh // USAF_CNO        ║\n║  CLEARANCE: TS/SCI + CI POLYGRAPH       ║\n║  FLAG{c0ns0l3_0p3rat0r_d3t3ct3d}        ║\n╚══════════════════════════════════════════╝',A);
+console.log('%ctry: decrypt • status • help • game • nmap • hire\n↑↑↓↓←→←→BA • right-click for ops menu',B);
+
+/* BOOT */
+const bootLines=[
+  {t:'INITIALIZING SOH PORTFOLIO SYSTEM v5.0...',c:'b-d',d:0},
+  {t:'VERIFYING OPERATOR IDENTITY...',c:'b-d',d:400},
+  {t:'CLEARANCE: TS/SCI + CI POLYGRAPH... [CONFIRMED]',c:'b-ok',d:800},
+  {t:'LOADING SUBJECT DATA: STEPHEN OH...',c:'b-d',d:1100},
+  {t:'LOADING 6+ YEARS OPERATIONAL DATA... [OK]',c:'b-ok',d:1400},
+  {t:'LOADING CERTIFICATIONS: GPEN, GCIH, SEC+... [OK]',c:'b-ok',d:1700},
+  {t:'WARNING: HIGH-VALUE ASSET — HANDLE WITH CARE',c:'b-e',d:2100},
+  {t:'ACCESS GRANTED — WELCOME, OPERATOR.',c:'b-w',d:2500},
+];
+function runBoot(){
+  const boot=document.getElementById('boot'),container=document.getElementById('boot-lines'),cursor=document.getElementById('boot-cursor');
+  bootLines.forEach(({t,c,d})=>{
+    setTimeout(()=>{const el=document.createElement('div');el.className=`boot-line ${c}`;el.style.animation=`typeIn 0.4s ${d}ms forwards`;el.textContent='> '+t;container.appendChild(el)},d);
+  });
+  setTimeout(()=>{cursor.style.display='none';boot.classList.add('hidden');setTimeout(()=>{boot.style.display='none'},600);sessionStorage.setItem('booted','1')},3400);
+}
+if(!sessionStorage.getItem('booted'))runBoot();
+else document.getElementById('boot').style.display='none';
+
+/* SCROLL PROGRESS */
+window.addEventListener('scroll',()=>{document.getElementById('scroll-bar').style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%'});
+
+/* REVEAL */
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* TAB TITLE */
+const RT=document.title;
+document.addEventListener('visibilitychange',()=>{document.title=document.hidden?'[ EYES ONLY ]':RT});
+
+/* STAT SCRAMBLE */
+const SCS='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%';
+document.querySelectorAll('.stat-num[data-real]').forEach(el=>{
+  el.addEventListener('click',()=>{
+    const real=el.dataset.real;let i=0;
+    const t=setInterval(()=>{el.textContent=Array.from(real).map(c=>Math.random()>0.4?SCS[Math.floor(Math.random()*SCS.length)]:c).join('');if(++i>12){clearInterval(t);el.textContent=real}},55);
+  });
+});
+
+/* REDACTED */
+document.querySelectorAll('.redacted').forEach(el=>{el.addEventListener('mouseenter',()=>el.classList.add('open'))});
+function revealAll(){document.querySelectorAll('.redacted').forEach(el=>el.classList.add('open'))}
+
+/* COPY FILE NUM */
+function copyFileNum(){
+  navigator.clipboard?.writeText('SO-USAF-CNO-TS-SCI-CIPOLY').catch(()=>{});
+  const el=document.getElementById('nav-file');const orig=el.innerHTML;el.textContent='COPIED TO CLIPBOARD';
+  setTimeout(()=>{el.innerHTML=orig},1500);
+}
+
+/* EXPERIENCE EXPAND */
+function toggleExp(row){
+  const body=row.querySelector('.exp-body'),hint=row.querySelector('.exp-hint');
+  body.classList.toggle('open');
+  hint.textContent=body.classList.contains('open')?'▾ Click to collapse':'▸ Click to expand operation brief';
+}
+
+/* SECTION NUM / H2 DOUBLE-CLICK GLITCH */
+document.querySelectorAll('.section-num,h2').forEach(el=>{
+  el.addEventListener('dblclick',()=>{
+    const orig=el.textContent;let i=0;
+    const t=setInterval(()=>{el.textContent=Array.from(orig).map(c=>Math.random()>0.5?SCS[Math.floor(Math.random()*SCS.length)]:c).join('');if(++i>8){clearInterval(t);el.textContent=orig}},60);
+  });
+});
+
+/* CONTEXT MENU */
+const ctxEl=document.getElementById('ctx');
+document.addEventListener('contextmenu',e=>{
+  e.preventDefault();
+  ctxEl.style.left=Math.min(e.clientX,window.innerWidth-220)+'px';
+  ctxEl.style.top=Math.min(e.clientY,window.innerHeight-300)+'px';
+  ctxEl.style.display='block';
+});
+document.addEventListener('click',closeCtx);
+function closeCtx(){ctxEl.style.display='none'}
+function navTo(id){document.querySelector(id)?.scrollIntoView({behavior:'smooth'})}
+function closeAll(){['status-pop','help-pop','nmap-pop','hire-pop'].forEach(id=>{document.getElementById(id).style.display='none'})}
+
+/* KONAMI */
+const KK=['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+let ki=0;
+document.addEventListener('keydown',e=>{
+  if(['INPUT','TEXTAREA'].includes(document.activeElement.tagName))return;
+  if(e.key===KK[ki])ki++;else ki=e.key===KK[0]?1:0;
+  if(ki===KK.length){ki=0;startKonami()}
+});
+function startKonami(){
+  const ov=document.getElementById('konami-ov');ov.style.display='flex';
+  setTimeout(()=>{document.getElementById('konami-prog').style.width='100%'},100);
+  setTimeout(()=>{document.getElementById('konami-main').textContent='CLEARANCE CONFIRMED';document.getElementById('konami-sub').textContent='WELCOME BACK, OPERATOR — S.OH';},3200);
+  setTimeout(()=>{ov.style.display='none'},4800);
+}
+
+/* TYPED COMMANDS */
+let typed='';
+document.addEventListener('keydown',e=>{
+  if(['INPUT','TEXTAREA'].includes(document.activeElement.tagName))return;
+  if(e.key.length>1)return;
+  typed+=e.key.toLowerCase();if(typed.length>10)typed=typed.slice(-10);
+  const cmds={decrypt:triggerDecrypt,status:showStatus,help:showHelp,game:openGame,nmap:showNmap,hire:showHire};
+  for(const[k,fn]of Object.entries(cmds)){if(typed.endsWith(k)){typed='';fn();break}}
+});
+
+function triggerDecrypt(){
+  const h1=document.querySelector('h1');if(!h1)return;
+  const orig=h1.innerHTML;const text=h1.textContent;let i=0;
+  const t=setInterval(()=>{
+    h1.innerHTML=Array.from(text).map((c,idx)=>idx<i?`<span style="color:var(--blue)">${c}</span>`:(Math.random()>0.5?SCS[Math.floor(Math.random()*SCS.length)]:c)).join('').replace(/\n/g,'<br>');
+    i+=2;if(i>text.length+6){clearInterval(t);setTimeout(()=>{h1.innerHTML=orig},300)}
+  },45);
+}
+
+function showStatus(){
+  const pop=document.getElementById('status-pop'),body=document.getElementById('status-body'),now=new Date();
+  const rows=[['SUBJECT','Stephen Oh // USAF_CNO'],['CLEARANCE','TS/SCI + CI POLYGRAPH'],['AVAILABLE','MAY 2027'],['LOCATION','AUSTIN, TX'],['THREAT LEVEL','HIGH — TO HIRING MANAGERS'],['LOCAL TIME',now.toTimeString().slice(0,8)],['PLATFORM',navigator.platform||'UNKNOWN'],['MISSION','CIVILIAN TRANSITION // PHASE 2']];
+  body.innerHTML=rows.map(([k,v])=>`<div class="pop-row"><span class="pop-k">${k}</span><span class="pop-v">${v}</span></div>`).join('');
+  pop.style.display='block';
+}
+function showHelp(){document.getElementById('help-pop').style.display='block'}
+function showHire(){document.getElementById('hire-pop').style.display='block'}
+
+function showNmap(){
+  const body=document.getElementById('nmap-body');
+  const lines=[
+    {c:'nm-m',t:'Starting Nmap 7.95 ( https://nmap.org )'},
+    {c:'nm-m',t:'Nmap scan report for stephen-oh.pages.dev'},
+    {c:'nm-m',t:'Host is up (0.00042s latency).'},
+    {c:'nm-m',t:'PORT     STATE  SERVICE'},
+    {c:'nm-g',t:'22/tcp   open   ssh'},
+    {c:'nm-g',t:'80/tcp   open   http (Cloudflare)'},
+    {c:'nm-g',t:'443/tcp  open   https (Cloudflare)'},
+    {c:'nm-r',t:'1337/tcp open   elite // S.OH C2 [!]'},
+    {c:'nm-m',t:'Service Info: USAF_CNO; TS/SCI; Available: May 2027'},
+    {c:'nm-g',t:'Nmap done: 1 IP (1 host up) scanned in 4.20 seconds'},
+  ];
+  body.innerHTML='';
+  lines.forEach(({c,t},i)=>{setTimeout(()=>{const el=document.createElement('div');el.className=c;el.textContent=t;body.appendChild(el);body.scrollTop=body.scrollHeight},i*130)});
+  document.getElementById('nmap-pop').style.display='block';
+}
+
+/* IDLE */
+let idleTimer,countTimer,countdown=10;
+function resetIdle(){
+  clearTimeout(idleTimer);clearInterval(countTimer);countdown=10;
+  document.getElementById('idle-ov').style.display='none';
+  document.getElementById('idle-count').textContent=countdown;
+  idleTimer=setTimeout(showIdle,30000);
+}
+function showIdle(){
+  document.getElementById('idle-ov').style.display='flex';countdown=10;
+  document.getElementById('idle-count').textContent=countdown;
+  countTimer=setInterval(()=>{countdown--;document.getElementById('idle-count').textContent=countdown;if(countdown<=0){clearInterval(countTimer);document.getElementById('idle-ov').style.display='none';resetIdle()}},1000);
+}
+['mousemove','keydown','click','scroll','touchstart'].forEach(ev=>document.addEventListener(ev,resetIdle,{passive:true}));
+resetIdle();
+
+/* SHAKE */
+let lastX=0,lastY=0,shakeScore=0,shaking=false;
+document.addEventListener('mousemove',e=>{
+  const dx=Math.abs(e.clientX-lastX),dy=Math.abs(e.clientY-lastY);
+  lastX=e.clientX;lastY=e.clientY;shakeScore+=dx+dy;
+  setTimeout(()=>{shakeScore-=(dx+dy)},200);
+  if(shakeScore>3000&&!shaking){shaking=true;triggerGlitch();setTimeout(()=>{shaking=false},1000)}
+});
+function triggerGlitch(){
+  const ov=document.getElementById('glitch-ov');ov.style.display='block';ov.innerHTML='';
+  for(let i=0;i<8;i++){const s=document.createElement('div');s.className='glitch-strip';s.style.top=Math.random()*100+'%';s.style.opacity=Math.random().toFixed(2);s.style.height=Math.random()*6+1+'px';ov.appendChild(s)}
+  setTimeout(()=>{ov.style.display='none'},220);
+}
+
+/* TERMINAL */
+const tov=document.getElementById('term-ov'),tout=document.getElementById('term-out'),tin=document.getElementById('term-in');
+let thist=[],thidx=-1;
+document.getElementById('term-close').addEventListener('click',()=>{tov.style.display='none'});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&tov.style.display==='flex')tov.style.display='none'});
+function openTerm(){
+  tov.style.display='flex';tin.focus();
+  if(tout.children.length===0){
+    tlines([{c:'tb',t:'  OPERATOR TERMINAL  //  v5.0'},{c:'te',t:'  soh@portfolio — TS/SCI + CI POLY session active'},{c:'te',t:'  '+new Date().toISOString()},{c:'te',t:'  ─────────────────────────────────────'},{c:'td',t:"  type 'help' for available commands."},{c:'te',t:''}]);
+  }
+}
+function tlines(arr){arr.forEach(({c,t})=>{const d=document.createElement('div');d.className=c;d.textContent=t;tout.appendChild(d)});tout.scrollTop=tout.scrollHeight}
+function tprompt(cmd){const d=document.createElement('div');d.className='tb';d.textContent='  soh@portfolio:~$ '+cmd;tout.appendChild(d)}
+const TCMDS={
+  help:()=>tlines([{c:'tb',t:'  COMMANDS:'},{c:'td',t:'    whoami  ls  cat about  clearance  mission'},{c:'td',t:'    skills  contact  hire  decrypt  status  game'},{c:'td',t:'    nmap  ping  sudo  cat flag.txt  clear  exit'},{c:'te',t:''}]),
+  whoami:()=>tlines([{c:'tb',t:'  uid=1(stephen_oh) gid=1(operators)'},{c:'td',t:'  groups: usaf_cno, cleared_ts_sci, cyber_warriors'},{c:'td',t:'  clearance: TS/SCI + CI POLYGRAPH'},{c:'td',t:'  status: TRANSITIONING // available May 2027'},{c:'te',t:''}]),
+  ls:()=>tlines([{c:'td',t:'  drwxr-xr-x  about/  experience/  skills/  certs/  contact/'},{c:'td',t:'  -r--------  clearance.txt  resume.pdf  flag.txt'},{c:'te',t:''}]),
+  'cat about':()=>tlines([{c:'td',t:'  Stephen Oh — USAF_CNO / 1B4X1'},{c:'td',t:'  6+ years offensive security & network exploitation'},{c:'td',t:'  U.S. Air Force — Cyber Operations, San Antonio TX'},{c:'td',t:'  Available: May 2027'},{c:'te',t:''}]),
+  clearance:()=>tlines([{c:'tw',t:'  // clearance.txt'},{c:'td',t:'  Level: TOP SECRET / SCI'},{c:'td',t:'  Poly:  CI Polygraph'},{c:'td',t:'  Status: ACTIVE'},{c:'te',t:''}]),
+  mission:()=>tlines([{c:'tw',t:'  // mission.txt'},{c:'td',t:'  Bring 6+ years of adversarial experience'},{c:'td',t:'  to the private sector. Help organizations defend'},{c:'td',t:'  what attackers actually target.'},{c:'te',t:''}]),
+  skills:()=>tlines([{c:'tb',t:'  // loaded capabilities:'},{c:'td',t:'  [*] Penetration Testing  [*] Red Team Ops'},{c:'td',t:'  [*] Network Exploitation  [*] Threat Intel'},{c:'td',t:'  [*] MITRE ATT&CK  [*] Malware Analysis'},{c:'td',t:'  [*] Python/Bash/PowerShell  [*] AWS'},{c:'td',t:'  [*] GPEN / GCIH / Security+ / CNOQC'},{c:'te',t:''}]),
+  contact:()=>tlines([{c:'tb',t:'  // contact channels:'},{c:'td',t:'  email → ohstephenss@gmail.com'},{c:'td',t:'  linkedin → update with your URL'},{c:'td',t:'  github  → update with your URL'},{c:'te',t:''}]),
+  hire:()=>{tlines([{c:'tb',t:'  // recruitment sequence...'},{c:'tg',t:'  [OK] clearance: TS/SCI + CI POLY'},{c:'tg',t:'  [OK] available: May 2027'},{c:'tw',t:'  [>>] proceed to contact form.'},{c:'te',t:''}]);showHire()},
+  decrypt:()=>{tlines([{c:'tb',t:'  // triggering decrypt...'},{c:'te',t:''}]);triggerDecrypt()},
+  status:()=>{tlines([{c:'tb',t:'  // opening status report...'},{c:'te',t:''}]);showStatus()},
+  game:()=>{tov.style.display='none';openGame()},
+  nmap:()=>{tlines([{c:'tb',t:'  // running nmap scan...'},{c:'te',t:''}]);showNmap()},
+  ping:()=>tlines([{c:'td',t:'  PING stephen-oh.pages.dev'},{c:'tg',t:'  64 bytes: icmp_seq=0 ttl=64 time=0.420 ms'},{c:'tg',t:'  64 bytes: icmp_seq=1 ttl=64 time=0.337 ms'},{c:'td',t:'  3 packets, 0% loss'},{c:'te',t:''}]),
+  'sudo rm -rf /':()=>tlines([{c:'tr',t:'  sudo: absolutely not.'},{c:'td',t:'  nice try.'},{c:'te',t:''}]),
+  'cat flag.txt':()=>tlines([{c:'tw',t:'  // flag.txt'},{c:'tb',t:'  flag{t3rm1nal_0p3rat0r_gh0st_s0h_d3t3ct3d}'},{c:'td',t:'  you found it. well done.'},{c:'te',t:''}]),
+  clear:()=>{tout.innerHTML=''},
+  exit:()=>{tov.style.display='none'},
+};
+tin.addEventListener('keydown',e=>{
+  if(e.key==='ArrowUp'){thidx=Math.min(thidx+1,thist.length-1);tin.value=thist[thidx]||''}
+  if(e.key==='ArrowDown'){thidx=Math.max(thidx-1,-1);tin.value=thidx===-1?'':thist[thidx]}
+  if(e.key!=='Enter')return;
+  const raw=tin.value.trim(),cmd=raw.toLowerCase();tin.value='';thidx=-1;if(!cmd)return;
+  thist.unshift(cmd);tprompt(raw);
+  if(TCMDS[cmd])TCMDS[cmd]();
+  else tlines([{c:'tr',t:`  bash: ${cmd}: command not found`},{c:'te',t:"  try 'help'"},{c:'te',t:''}]);
+});
+
+/* SNAKE */
+let gameLoop,snake,food,dir,nextDir,score,gameOver;
+const COLS=20,ROWS=20,CELL=20;
+function openGame(){document.getElementById('game-ov').style.display='flex';initSnake()}
+function closeGame(){document.getElementById('game-ov').style.display='none';clearInterval(gameLoop)}
+function initSnake(){
+  clearInterval(gameLoop);snake=[{x:10,y:10},{x:9,y:10},{x:8,y:10}];
+  dir={x:1,y:0};nextDir={x:1,y:0};score=0;gameOver=false;
+  placeFood();document.getElementById('game-score').textContent='SCORE: 0';
+  gameLoop=setInterval(stepSnake,120);
+}
+function placeFood(){food={x:Math.floor(Math.random()*COLS),y:Math.floor(Math.random()*ROWS)}}
+function stepSnake(){
+  if(gameOver)return;dir=nextDir;
+  const head={x:snake[0].x+dir.x,y:snake[0].y+dir.y};
+  if(head.x<0||head.x>=COLS||head.y<0||head.y>=ROWS||snake.some(s=>s.x===head.x&&s.y===head.y)){gameOver=true;drawSnake(true);clearInterval(gameLoop);return}
+  snake.unshift(head);
+  if(head.x===food.x&&head.y===food.y){score++;document.getElementById('game-score').textContent='SCORE: '+score;placeFood()}
+  else snake.pop();drawSnake(false);
+}
+function drawSnake(dead){
+  const cv=document.getElementById('game-canvas'),ctx=cv.getContext('2d');
+  ctx.fillStyle='#000d1a';ctx.fillRect(0,0,cv.width,cv.height);
+  ctx.strokeStyle='rgba(77,168,255,0.05)';ctx.lineWidth=0.5;
+  for(let i=0;i<=COLS;i++){ctx.beginPath();ctx.moveTo(i*CELL,0);ctx.lineTo(i*CELL,cv.height);ctx.stroke()}
+  for(let i=0;i<=ROWS;i++){ctx.beginPath();ctx.moveTo(0,i*CELL);ctx.lineTo(cv.width,i*CELL);ctx.stroke()}
+  ctx.fillStyle=dead?'#ff4040':'#4DA8FF';ctx.fillRect(food.x*CELL+2,food.y*CELL+2,CELL-4,CELL-4);
+  snake.forEach((s,i)=>{ctx.fillStyle=dead?'#333':(i===0?'#60B4FF':'rgba(77,168,255,'+(0.9-i*0.03)+')');ctx.fillRect(s.x*CELL+1,s.y*CELL+1,CELL-2,CELL-2)});
+  if(dead){ctx.fillStyle='rgba(255,64,64,0.9)';ctx.font='bold 13px "IBM Plex Mono"';ctx.textAlign='center';ctx.fillText('GAME OVER — PRESS ENTER',cv.width/2,cv.height/2-10);ctx.fillStyle='rgba(77,168,255,0.9)';ctx.fillText('SCORE: '+score,cv.width/2,cv.height/2+12)}
+}
+document.addEventListener('keydown',e=>{
+  const g={ArrowUp:{x:0,y:-1},ArrowDown:{x:0,y:1},ArrowLeft:{x:-1,y:0},ArrowRight:{x:1,y:0},w:{x:0,y:-1},s:{x:0,y:1},a:{x:-1,y:0},d:{x:1,y:0}};
+  if(document.getElementById('game-ov').style.display==='flex'){
+    if(e.key==='Enter'&&gameOver)initSnake();
+    const nd=g[e.key];if(nd&&!(nd.x===-dir.x&&nd.y===-dir.y))nextDir=nd;
+    if(g[e.key])e.preventDefault();
+  }
+});
+</script>
+<!-- ─── AI CHATBOT ─── -->
+<button id="chat-btn" onclick="toggleChat()" title="Ask me about Stephen">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm-2 10H6v-2h12v2zm0-3H6V7h12v2z"/></svg>
+  <span class="chat-ping"></span>
+</button>
+
+<div id="chat-panel">
+  <div class="chat-head">
+    <div class="chat-head-left">
+      <div class="chat-head-dot active"></div>
+      <div>
+        <div class="chat-head-title">OPERATOR AI</div>
+        <div class="chat-head-sub">Ask me about Stephen Oh</div>
+      </div>
+    </div>
+    <button class="chat-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div id="chat-msgs"></div>
+  <div class="chat-input-row">
+    <textarea id="chat-input" placeholder="Ask anything about Stephen..." rows="1"></textarea>
+    <button id="chat-send" onclick="sendChat()">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+/* ── CHATBOT ── */
+const CHAT_SYSTEM = `You are an AI assistant embedded in Stephen Oh's portfolio website. You answer questions about Stephen professionally, clearly, and concisely. Keep responses to 2-4 sentences unless more detail is genuinely needed.
+
+ABOUT STEPHEN OH:
+- Cybersecurity professional with 6+ years in offensive security, network exploitation, and vulnerability research
+- USAF 1B4X1 — Cyber Operations Specialist (USAF_CNO)
+- Active TS/SCI clearance with CI Polygraph
+- Available: May 2027 (military separation date: 14 May 2027)
+- Location: Austin, TX
+- Email: ohstephenss@gmail.com
+
+EXPERIENCE:
+1. Offensive Security Operator (Jul 2024 – Present) — U.S. Air Force, Cyber Operations, San Antonio TX
+   - Ran offensive security operations on national-level platforms, conducting network exploitation and intelligence collection
+   - Coordinated six operations with two international partner organizations — both hit 100% of their objectives (first allied collaboration of its kind in 8 years)
+   - Mentored five junior officers through a 7-month qual pipeline — all passed, doubled the team's prior 55% pass rate
+   - Led cross-team platform recovery keeping 40+ active engagements running without losing OPSEC posture
+   - Built a data delivery method that cut a 2-month delay to under an hour
+
+2. Cybersecurity Operator (Oct 2020 – Jun 2024) — U.S. Air Force, San Antonio TX
+   - Offensive security operations and network exploitation across 12 operational teams and three task forces
+   - Mentored 12 junior officers through a 720-hour qualification course — all passed, finished 10 days early
+   - Rebuilt a 109-module training curriculum — added 14 missing topics, updated 37 tasks, scores improved 47%
+   - Launched immersion program recovering 50,000+ hours of lost training value
+
+3. Electronics & Systems Technician (May 2017 – Sep 2020) — U.S. Air Force, Ramstein AB, Germany
+   - Taught electronics and computer networking through a 776-hour program — 100% graduation rate
+   - Component-level circuit board and PCB repairs; 13 compliance audits at 100%
+
+EDUCATION:
+- B.S. Information Technology — Western Governors University (Expected Aug 2026)
+- A.A.S. Cyber Security — Community College of the Air Force (Dec 2025)
+- A.A.S. Microprecision Technology — CCAF (Apr 2021)
+
+CERTIFICATIONS: GPEN, GCIH, CNOQC, FORGE, Security+, A+, Project+, AWS Cloud Practitioner
+
+TECHNICAL SKILLS:
+- Offensive: Penetration Testing, Red Team Ops, Network Exploitation, Privilege Escalation, Lateral Movement, C2 Frameworks, OSINT
+- Tools: Metasploit, Cobalt Strike, Nmap, Burp Suite, Wireshark, Nessus, Ghidra, Volatility
+- Languages: Python, Bash, PowerShell, SQL
+- Frameworks: MITRE ATT&CK, NIST CSF, RMF, OWASP, Kill Chain
+- Cloud: AWS, Cloud Security, Virtualization & Sandboxing
+- OS: Windows, Linux, UNIX
+
+OPEN TO: Red team, penetration testing, threat operations, security engineering, cloud security, detection engineering — government, defense, and private sector.
+
+RULES:
+- Be professional, friendly, and concise
+- Never invent details not listed above
+- If asked about salary or compensation, say Stephen handles that directly
+- If someone seems interested in hiring, encourage them to use the contact form or email ohstephenss@gmail.com
+- Do not discuss classified operational specifics beyond what is listed
+- If asked something outside your knowledge, say you don't have that info and suggest contacting Stephen directly`;
+
+let chatHistory = [];
+let chatOpen = false;
+let chatInitialized = false;
+
+function toggleChat() {
+  const panel = document.getElementById('chat-panel');
+  chatOpen = !chatOpen;
+  panel.style.display = chatOpen ? 'flex' : 'none';
+  if (chatOpen && !chatInitialized) {
+    chatInitialized = true;
+    addMsg('ai', "Hi — I'm Stephen's AI assistant. I have his full resume loaded. Ask me about his experience, skills, clearance, availability, or anything else.");
+  }
+  if (chatOpen) document.getElementById('chat-input').focus();
+}
+
+function addMsg(role, text) {
+  const msgs = document.getElementById('chat-msgs');
+  const div = document.createElement('div');
+  div.className = `chat-msg ${role}`;
+  div.textContent = text;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  return div;
+}
+
+function addTyping() {
+  const msgs = document.getElementById('chat-msgs');
+  const div = document.createElement('div');
+  div.className = 'chat-msg typing';
+  div.id = 'chat-typing';
+  div.innerHTML = '<div class="typing-dots"><span></span><span></span><span></span></div>';
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function removeTyping() {
+  const el = document.getElementById('chat-typing');
+  if (el) el.remove();
+}
+
+async function sendChat() {
+  const input = document.getElementById('chat-input');
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+  input.style.height = 'auto';
+
+  addMsg('user', text);
+  chatHistory.push({ role: 'user', content: text });
+
+  const sendBtn = document.getElementById('chat-send');
+  sendBtn.style.opacity = '0.4';
+  sendBtn.disabled = true;
+  addTyping();
+
+  try {
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        system: CHAT_SYSTEM,
+        messages: chatHistory
+      })
+    });
+
+    removeTyping();
+
+    if (!res.ok) throw new Error('API error');
+
+    const data = await res.json();
+    const reply = data.content?.[0]?.text || "Sorry, I couldn't get a response. Try again or contact Stephen directly at ohstephenss@gmail.com";
+
+    addMsg('ai', reply);
+    chatHistory.push({ role: 'assistant', content: reply });
+
+    // keep history manageable
+    if (chatHistory.length > 20) chatHistory = chatHistory.slice(-20);
+
+  } catch (err) {
+    removeTyping();
+    addMsg('ai', "Connection issue — please try again or reach Stephen directly at ohstephenss@gmail.com");
+  }
+
+  sendBtn.style.opacity = '1';
+  sendBtn.disabled = false;
+}
+
+// enter to send, shift+enter for newline
+document.getElementById('chat-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChat(); }
+});
+
+// auto-resize textarea
+document.getElementById('chat-input').addEventListener('input', function() {
+  this.style.height = 'auto';
+  this.style.height = Math.min(this.scrollHeight, 100) + 'px';
+});
+</script>
+
+</body>
+</html>
