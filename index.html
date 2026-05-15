@@ -1116,7 +1116,7 @@ async function sendChat() {
   addTyping();
 
   try {
-    const res = await fetch('/api/chat', {
+    const res = await fetch('https://portfolio-chat.ohstephenss.workers.dev', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
