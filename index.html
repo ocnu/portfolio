@@ -1,31 +1,12 @@
 <!DOCTYPE html>
-<!--
-╔══════════════════════════════════════════════════════════════╗
-║  CLASSIFICATION: TOP SECRET // SCI // CI POLY               ║
-║  SUBJECT FILE: S.OH // USAF_CNO // OFFENSIVE SEC OPS        ║
-║  AVAILABLE: MAY 2027 // MILITARY SEPARATION                 ║
-╠══════════════════════════════════════════════════════════════╣
-║  ROT13 MESSAGE:                                             ║
-║  Fgrcura Bu vf bar bs gur orfg pnaqvqngrf lbh'yy zrrg.     ║
-║  FLAG{s0urc3_c0d3_r34d3r_d3t3ct3d_g00d_0p3r4t0r}          ║
-╠══════════════════════════════════════════════════════════════╣
-║  EASTER EGG MANIFEST:                                       ║
-║  → right-click anywhere  → ↑↑↓↓←→←→BA                     ║
-║  → type: decrypt / status / help / game / nmap / hire      ║
-║  → hover redacted bars   → click stat numbers              ║
-║  → click skill items     → >_ terminal (15+ commands)      ║
-║  → idle 30s              → rapid mouse shake               ║
-║  → inspect the form      → footer cipher (ROT13)           ║
-╚══════════════════════════════════════════════════════════════╝
--->
-<html lang="en">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<!-- saved from url=(0049)file:///C:/Users/osung/Downloads/portfolio_9.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Stephen Oh — Offensive Security</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="./index_files/css2" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -343,15 +324,15 @@ footer{background:var(--ink);border-top:1px solid var(--border);padding:1.5rem 3
 <div id="scroll-bar"></div>
 
 <!-- BOOT -->
-<div id="boot"><div id="boot-lines"></div><span class="boot-cursor" id="boot-cursor"></span></div>
+<div id="boot" class="hidden" style="display: none;"><div id="boot-lines"><div class="boot-line b-d" style="animation: 0.4s ease 0ms 1 normal forwards running typeIn;">&gt; INITIALIZING SOH PORTFOLIO SYSTEM v5.0...</div><div class="boot-line b-d" style="animation: 0.4s ease 400ms 1 normal forwards running typeIn;">&gt; VERIFYING OPERATOR IDENTITY...</div><div class="boot-line b-ok" style="animation: 0.4s ease 800ms 1 normal forwards running typeIn;">&gt; CLEARANCE: TS/SCI + CI POLYGRAPH... [CONFIRMED]</div><div class="boot-line b-d" style="animation: 0.4s ease 1100ms 1 normal forwards running typeIn;">&gt; LOADING SUBJECT DATA: STEPHEN OH...</div><div class="boot-line b-ok" style="animation: 0.4s ease 1400ms 1 normal forwards running typeIn;">&gt; LOADING 6+ YEARS OPERATIONAL DATA... [OK]</div><div class="boot-line b-ok" style="animation: 0.4s ease 1700ms 1 normal forwards running typeIn;">&gt; LOADING CERTIFICATIONS: GPEN, GCIH, SEC+... [OK]</div><div class="boot-line b-e" style="animation: 0.4s ease 2100ms 1 normal forwards running typeIn;">&gt; WARNING: HIGH-VALUE ASSET — HANDLE WITH CARE</div><div class="boot-line b-w" style="animation: 0.4s ease 2500ms 1 normal forwards running typeIn;">&gt; ACCESS GRANTED — WELCOME, OPERATOR.</div></div><span class="boot-cursor" id="boot-cursor" style="display: none;"></span></div>
 
 <!-- OVERLAYS -->
 <div id="ctx">
   <div class="ctx-head">OPS TERMINAL — AUTHENTICATED</div>
-  <div class="ctx-item" onclick="navTo('#about');closeCtx()"><span class="ci">▸</span>VIEW SUBJECT FILE</div>
-  <div class="ctx-item" onclick="navTo('#experience');closeCtx()"><span class="ci">▸</span>VIEW EXPERIENCE</div>
-  <div class="ctx-item" onclick="navTo('#skills');closeCtx()"><span class="ci">▸</span>ACCESS CAPABILITIES</div>
-  <div class="ctx-item" onclick="navTo('#certs');closeCtx()"><span class="ci">▸</span>VIEW CERTIFICATIONS</div>
+  <div class="ctx-item" onclick="navTo(&#39;#about&#39;);closeCtx()"><span class="ci">▸</span>VIEW SUBJECT FILE</div>
+  <div class="ctx-item" onclick="navTo(&#39;#experience&#39;);closeCtx()"><span class="ci">▸</span>VIEW EXPERIENCE</div>
+  <div class="ctx-item" onclick="navTo(&#39;#skills&#39;);closeCtx()"><span class="ci">▸</span>ACCESS CAPABILITIES</div>
+  <div class="ctx-item" onclick="navTo(&#39;#certs&#39;);closeCtx()"><span class="ci">▸</span>VIEW CERTIFICATIONS</div>
   <div class="ctx-sep"></div>
   <div class="ctx-item" onclick="revealAll();closeCtx()"><span class="ci">◈</span>DECLASSIFY ALL REDACTED</div>
   <div class="ctx-item" onclick="triggerDecrypt();closeCtx()"><span class="ci">◈</span>DECRYPT HEADER</div>
@@ -378,7 +359,7 @@ footer{background:var(--ink);border-top:1px solid var(--border);padding:1.5rem 3
     <div class="help-row"><span class="help-cmd">click skills</span><span class="help-desc">reveal clearance level</span></div>
     <div class="help-row"><span class="help-cmd">hover redacted</span><span class="help-desc">reveal classified intel</span></div>
     <div class="help-row"><span class="help-cmd">click experience</span><span class="help-desc">expand job details</span></div>
-    <div class="help-row"><span class="help-cmd">>_ terminal</span><span class="help-desc">full operator shell</span></div>
+    <div class="help-row"><span class="help-cmd">&gt;_ terminal</span><span class="help-desc">full operator shell</span></div>
     <div class="help-row"><span class="help-cmd">idle 30s</span><span class="help-desc">session expiry warning</span></div>
     <div class="help-row"><span class="help-cmd">shake mouse</span><span class="help-desc">screen glitch</span></div>
     <div class="help-row"><span class="help-cmd">view source</span><span class="help-desc">find the hidden flag</span></div>
@@ -403,7 +384,7 @@ footer{background:var(--ink);border-top:1px solid var(--border);padding:1.5rem 3
 <div id="term-ov">
   <div class="term-bar"><span class="term-title">OPERATOR TERMINAL — soh@portfolio:~</span><button class="term-x" id="term-close">[ ESC / close ]</button></div>
   <div id="term-out"></div>
-  <div class="term-in-row"><span class="term-ps">soh@portfolio:~$&nbsp;</span><input type="text" id="term-in" placeholder="type 'help' for commands..." autocomplete="off" spellcheck="false"/></div>
+  <div class="term-in-row"><span class="term-ps">soh@portfolio:~$&nbsp;</span><input type="text" id="term-in" placeholder="type &#39;help&#39; for commands..." autocomplete="off" spellcheck="false"></div>
 </div>
 
 <div id="game-ov">
@@ -413,10 +394,10 @@ footer{background:var(--ink);border-top:1px solid var(--border);padding:1.5rem 3
   <button class="game-close-btn" onclick="closeGame()">[ ABORT MISSION ]</button>
 </div>
 
-<div id="idle-ov">
+<div id="idle-ov" style="display: none;">
   <div class="idle-box">
     <div class="idle-icon">⚠ SESSION</div>
-    <div class="idle-msg">INACTIVITY DETECTED<br/>TERMINATING IN</div>
+    <div class="idle-msg">INACTIVITY DETECTED<br>TERMINATING IN</div>
     <div class="idle-count" id="idle-count">10</div>
     <button class="idle-btn" onclick="resetIdle()">MAINTAIN CONNECTION</button>
   </div>
@@ -433,9 +414,9 @@ footer{background:var(--ink);border-top:1px solid var(--border);padding:1.5rem 3
     <div class="hire-ok">  [OK] 6+ years offensive security: CONFIRMED</div>
     <div class="hire-ok">  [OK] GPEN / GCIH / Security+: VALIDATED</div>
     <div class="hire-ok">  [OK] Available: May 2027</div>
-    <div class="hire-w">  [>>] Open to: Red Team, Pen Test, Threat Ops,</div>
-    <div class="hire-w">  [>>] Security Engineering, Cloud Security, Detection Eng.</div>
-    <div style="margin-top:1.25rem;text-align:center"><a href="#contact" onclick="closeAll()" class="btn-blue" style="display:inline-flex">PROCEED TO CONTACT ↗</a></div>
+    <div class="hire-w">  [&gt;&gt;] Open to: Red Team, Pen Test, Threat Ops,</div>
+    <div class="hire-w">  [&gt;&gt;] Security Engineering, Cloud Security, Detection Eng.</div>
+    <div style="margin-top:1.25rem;text-align:center"><a href="file:///C:/Users/osung/Downloads/portfolio_9.html#contact" onclick="closeAll()" class="btn-blue" style="display:inline-flex">PROCEED TO CONTACT ↗</a></div>
   </div>
 </div>
 
@@ -443,10 +424,10 @@ footer{background:var(--ink);border-top:1px solid var(--border);padding:1.5rem 3
 <nav>
   <div class="nav-file" id="nav-file" onclick="copyFileNum()" title="Click to copy">FILE: <span>SO-USAF-CNO-TS-<span class="redacted">SCI-CIPOLY<span class="redacted-tip">TS/SCI + CI Polygraph</span></span></span></div>
   <ul class="nav-links">
-    <li><a href="#about">SUBJECT</a></li>
-    <li><a href="#experience">EXPERIENCE</a></li>
-    <li><a href="#skills">SKILLS</a></li>
-    <li><a href="#contact">CONTACT</a></li>
+    <li><a href="file:///C:/Users/osung/Downloads/portfolio_9.html#about">SUBJECT</a></li>
+    <li><a href="file:///C:/Users/osung/Downloads/portfolio_9.html#experience">EXPERIENCE</a></li>
+    <li><a href="file:///C:/Users/osung/Downloads/portfolio_9.html#skills">SKILLS</a></li>
+    <li><a href="file:///C:/Users/osung/Downloads/portfolio_9.html#contact">CONTACT</a></li>
     <li><button class="nav-btn" onclick="openTerm()">_&gt;</button></li>
   </ul>
 </nav>
@@ -457,21 +438,21 @@ footer{background:var(--ink);border-top:1px solid var(--border);padding:1.5rem 3
   <div class="hero-bg">GHOST</div>
   <div class="hero-rule"></div>
   <div class="hero-inner">
-    <div class="hero-left reveal">
+    <div class="hero-left reveal visible">
       <div class="avail-badge">Available — May 2027</div>
       <div class="hero-eyebrow">USAF_CNO — Offensive Security</div>
-      <h1>STEPHEN<br/>OH<span class="hl">.</span></h1>
+      <h1>STEPHEN<br>OH<span class="hl">.</span></h1>
       <div class="ghost-text">[ CALLSIGN: GHOST_1B4 // TS/SCI + CI POLY // AVAILABLE: MAY 2027 ]</div>
       <p class="hero-sub" style="margin-top:1.25rem">
-        6+ years in <span class="redacted">offensive security and network exploitation<span class="redacted-tip">AFSC: 1B4X1</span></span> across high-stakes national security environments.<br/><br/>
+        6+ years in <span class="redacted">offensive security and network exploitation<span class="redacted-tip">AFSC: 1B4X1</span></span> across high-stakes national security environments.<br><br>
         TS/SCI + CI Polygraph. Transitioning May 2027. Open to red team, penetration testing, threat ops, and detection engineering.
       </p>
       <div class="hero-actions">
-        <a href="#experience" class="btn-blue">VIEW EXPERIENCE ↗</a>
-        <a href="#contact" class="btn-outline">MAKE CONTACT</a>
+        <a href="file:///C:/Users/osung/Downloads/portfolio_9.html#experience" class="btn-blue">VIEW EXPERIENCE ↗</a>
+        <a href="file:///C:/Users/osung/Downloads/portfolio_9.html#contact" class="btn-outline">MAKE CONTACT</a>
       </div>
     </div>
-    <div class="hero-right reveal d2">
+    <div class="hero-right reveal d2 visible">
       <div class="stat-row"><span class="stat-num" data-real="6+" title="Click me">6+</span><span class="stat-label"><strong>Years in Cyber</strong>Offensive Security Operations</span></div>
       <div class="stat-row"><span class="stat-num" data-real="TS" title="Click me">TS</span><span class="stat-label"><strong>Clearance Level</strong>SCI + CI Polygraph</span></div>
       <div class="stat-row"><span class="stat-num" data-real="GPEN" title="Click me">GPEN</span><span class="stat-label"><strong>Top Certification</strong>GIAC Penetration Tester</span></div>
@@ -494,7 +475,7 @@ footer{background:var(--ink);border-top:1px solid var(--border);padding:1.5rem 3
           <div class="subject-header"><span class="subject-header-label">SUBJECT PHOTO</span><span style="font-size:0.58rem;color:var(--ink);letter-spacing:0.1em">AUTHENTICATED</span></div>
           <!-- Upload your photo to Cloudflare Pages alongside index.html and name it photo.png -->
           <div class="subject-photo">
-            <img src="photo.png" style="width:100%;height:100%;object-fit:cover;display:block" alt="Stephen Oh"/>
+            <img src="file:///C:/Users/osung/Downloads/photo.png" style="width:100%;height:100%;object-fit:cover;display:block" alt="Stephen Oh">
             <div class="subject-stamp">IDENTIFIED</div>
           </div>
           <div class="subject-data">
@@ -697,14 +678,14 @@ footer{background:var(--ink);border-top:1px solid var(--border);padding:1.5rem 3
           <a href="https://github.com/yourusername" class="channel" target="_blank" rel="noopener"><span class="channel-icon">GH</span><span><span class="channel-label">GitHub</span><span class="channel-val">github.com/yourusername</span></span><span class="channel-arrow">↗</span></a>
         </div>
       </div>
-      <form class="contact-form reveal d2" action="https://formspree.io/f/mvzlewwj" method="POST">
+      <form class="contact-form reveal d2" action="https://formspree.io/f/REPLACE_WITH_YOUR_ID" method="POST">
         <!-- HONEYPOT — dev tools only. flag{h0n3yp0t_0p3rat0r_d3t3ct3d} -->
-        <div class="secret-field" aria-hidden="true"><label>OPERATOR_LEVEL</label><input type="text" name="op_level" value="GHOST_1B4" tabindex="-1" autocomplete="off"/></div>
+        <div class="secret-field" aria-hidden="true"><label>OPERATOR_LEVEL</label><input type="text" name="op_level" value="GHOST_1B4" tabindex="-1" autocomplete="off"></div>
         <div class="form-row">
-          <div class="form-group"><label for="fn">Name</label><input type="text" id="fn" name="name" placeholder="Jane Smith" required/></div>
-          <div class="form-group"><label for="fe">Email</label><input type="email" id="fe" name="email" placeholder="jane@org.com" required/></div>
+          <div class="form-group"><label for="fn">Name</label><input type="text" id="fn" name="name" placeholder="Jane Smith" required=""></div>
+          <div class="form-group"><label for="fe">Email</label><input type="email" id="fe" name="email" placeholder="jane@org.com" required=""></div>
         </div>
-        <div class="form-group"><label for="fs">Organization</label><input type="text" id="fs" name="org" placeholder="Company / Agency"/></div>
+        <div class="form-group"><label for="fs">Organization</label><input type="text" id="fs" name="org" placeholder="Company / Agency"></div>
         <div class="form-group"><label for="fm">Message</label><textarea id="fm" name="message" placeholder="SkillBridge inquiry, role, or just reaching out..."></textarea></div>
         <button type="submit" class="btn-blue">TRANSMIT ↗</button>
       </form>
@@ -981,7 +962,7 @@ document.addEventListener('keydown',e=>{
 </script>
 <!-- ─── AI CHATBOT ─── -->
 <button id="chat-btn" onclick="toggleChat()" title="Ask me about Stephen">
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm-2 10H6v-2h12v2zm0-3H6V7h12v2z"/></svg>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm-2 10H6v-2h12v2zm0-3H6V7h12v2z"></path></svg>
   <span class="chat-ping"></span>
 </button>
 
@@ -1000,7 +981,7 @@ document.addEventListener('keydown',e=>{
   <div class="chat-input-row">
     <textarea id="chat-input" placeholder="Ask anything about Stephen..." rows="1"></textarea>
     <button id="chat-send" onclick="sendChat()">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"></path></svg>
     </button>
   </div>
 </div>
@@ -1129,13 +1110,8 @@ async function sendChat() {
 
     if (!res.ok) throw new Error('API error');
 
-	const data = await res.json();
-	const reply = data?.content?.[0]?.text || "Sorry, I couldn't get a response. Try again or contact Stephen directly at ohstephenss@gmail.com";
-
-	addMsg('ai', reply);
-	chatHistory.push({ role: 'assistant', content: reply });
-
-	if (chatHistory.length > 20) chatHistory = chatHistory.slice(-20);
+    const data = await res.json();
+    const reply = data.content?.[0]?.text || "Sorry, I couldn't get a response. Try again or contact Stephen directly at ohstephenss@gmail.com";
 
     addMsg('ai', reply);
     chatHistory.push({ role: 'assistant', content: reply });
@@ -1164,5 +1140,6 @@ document.getElementById('chat-input').addEventListener('input', function() {
 });
 </script>
 
-</body>
-</html>
+
+
+</body></html>
