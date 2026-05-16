@@ -1129,8 +1129,13 @@ async function sendChat() {
 
     if (!res.ok) throw new Error('API error');
 
-    const data = await res.json();
-    const reply = data.content?.[0]?.text || "Sorry, I couldn't get a response. Try again or contact Stephen directly at ohstephenss@gmail.com";
+	const data = await res.json();
+	const reply = data?.content?.[0]?.text || "Sorry, I couldn't get a response. Try again or contact Stephen directly at ohstephenss@gmail.com";
+
+	addMsg('ai', reply);
+	chatHistory.push({ role: 'assistant', content: reply });
+
+	if (chatHistory.length > 20) chatHistory = chatHistory.slice(-20);
 
     addMsg('ai', reply);
     chatHistory.push({ role: 'assistant', content: reply });
